@@ -1,0 +1,81 @@
+/* style_login.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height for centering */
+    margin: 0;
+}
+
+.login-container {
+    height: 450px; /* Increased height for better layout */
+    width: 300px; /* Increased width for better layout */
+    padding: 2rem; /* More padding for a spacious feel */
+    border-radius: 1rem; /* Softer corners */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Softer shadow */
+    border: 2px solid rgba(33, 126, 49, 0.8); /* Darker green */
+    background-color: #ececec; /* Light green background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h2 {
+    color: #2e7d32; /* Darker green for the heading */
+    margin-bottom: 1.5rem; /* Spacing below the heading */
+    font-family: 'Arial', sans-serif; /* Modern font */
+    font-size: 1.5rem; /* Larger font size */
+}
+
+.input-group {
+    margin-bottom: 1.5rem; /* Increased margin for spacing */
+    width: 100%; /* Full width for input groups */
+}
+
+.input-group label {
+    display: block;
+    text-align: left;
+    color: #2e7d32; /* Darker green for labels */
+    margin-bottom: 0.5rem; /* Spacing below labels */
+    font-weight: bold; /* Bold labels for emphasis */
+}
+
+.input-group input {
+    padding: 0.8rem; /* Increased padding for comfort */
+    border: 1px solid #2e7d32; /* Light green border */
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1rem; /* Modern font size */
+    transition: border-color 0.3s; /* Smooth transition for focus */
+    color: #2e7d32;
+}
+
+.input-group input:focus {
+    border-color: #66bb6a; /* Focused border color */
+    outline: none; /* Remove default outline */
+}
+
+button {
+    background-color: #4caf50; /* Bright green */
+    border: none; /* No border for a cleaner look */
+    border-radius: 5px;
+    padding: 0.8rem;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem; /* Modern font size */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+button:hover {
+    background-color: #388e3c; /* Darker green on hover */
+}
+
+.errors {
+    color: #d32f2f; /* Red for errors */
+    margin-bottom: 1rem; /* Increased margin for spacing */
+    border: 1px solid #d32f2f; /* Red border */
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: #ffebee; /* Light red background for errors */
+}

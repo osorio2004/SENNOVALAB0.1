@@ -1,0 +1,739 @@
+.container{
+    display: flex;
+    width: 100%;
+}
+
+.sidebar{
+    width: 250px;
+    background-color: #2f855a; /* Verde oscuro */
+    color: white;
+    height: 165vh;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+.sidebar-content{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+}
+
+.logo{
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid white;
+    padding-bottom: 30px;
+    img{
+        width: 100%;
+    }
+}
+
+.menu ul{
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.menu a{
+    transition: .2s all ease-in;
+    padding: 1rem;
+    display: flex;
+}
+
+.menu a:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-radius: 6px;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.header{
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.header-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content{
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.data-container {
+    border: 1px solid #a5bed8;
+    border-radius: 8px;
+    background-color: #ececec;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+div.info{
+    max-height: 320px;
+    overflow-y: auto;
+    padding: 0.5em 1em;
+}
+
+div.record {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2.5rem;
+    padding: .2rem 0;
+    margin-top: 10px;
+    padding: 30px 15px;
+    height: 50px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+div.record-one{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: .4rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons button {
+    cursor: pointer;
+    padding: 0.1rem .5rem;
+    background-color: #2f855a; /* Verde oscuro */
+    color: #ffffff;
+    border: none;
+    padding: .8em;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.buttons button:hover {
+    background-color: #2b6e4f; /* Verde más oscuro */
+    transform: translateY(-2px);
+}
+
+.create{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    transition: .2s all ease-in;
+}
+
+.create button{
+    background-color: #2f855a; /* Verde oscuro */
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(47, 133, 90, 0.3);
+}
+
+.create:hover{
+    transform: scale(1.05);
+}
+
+.create button:hover {
+    background-color: #2b6e4f; /* Verde más oscuro */
+    box-shadow: 0 6px 12px rgba(47, 133, 90, 0.4);
+}
+
+.form-group button{
+    cursor: pointer;
+    background-color: #2f855a; /* Verde oscuro */
+    color: #fff;
+    border: none;
+    padding: .8em;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(47, 133, 90, 0.2);
+}
+
+.form-group button:hover {
+    background-color: #2b6e4f; /* Verde más oscuro */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(47, 133, 90, 0.3);
+}
+
+.form-group {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+
+.form-group input, select, textarea {
+    margin-bottom: .8em;
+    height: 32px;
+    width: 250px;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 0 10px;
+    background-color: #f8f9fa;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus, select:focus, textarea:focus {
+    border-color: #2f855a; /* Verde oscuro */
+    box-shadow: 0 0 0 2px rgba(47, 133, 90, 0.2);
+}
+
+span{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+}
+
+.back a{
+    cursor: pointer;
+    height: 34px;
+    transition: .2s all ease-in;
+}
+
+.back a img{
+    width: 34px;
+    height: 34px;
+}
+
+.back a:hover{
+    transform: scale(1.1);
+}
+
+.back{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.navegate-group{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 1px solid #a5bed8;
+    padding: 35px;
+    border-radius: 8px;
+    gap: 80px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+/* Estilos para los iconos */
+i.fas {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Estilos para los iconos del sidebar */
+.sidebar .menu a i {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* Estilos para los iconos del header */
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-icons .icon-link {
+    color: #2f855a; /* Verde oscuro */
+    font-size: 22px;
+    transition: .2s all ease-in;
+    margin-right: 10px;
+}
+
+.header-icons .icon-link:hover {
+    transform: scale(1.1);
+    color: #2b6e4f; /* Verde más oscuro */
+}
+
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .sidebar {
+    background-color: #2f855a;
+}
+
+body.dark-mode .header {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+body.dark-mode .header-icons .icon-link {
+    color: #2f855a; /* Verde oscuro */
+}
+
+body.dark-mode .header-icons .icon-link:hover {
+    color: #2b6e4f; /* Verde más oscuro */
+}
+
+/* Modo oscuro para los contenedores de datos */
+body.dark-mode .data-container {
+    border-color: #2d8a5b;
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .data-container div.info {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode div.record {
+    background-color: #333834;
+    border-color: #4a5568;
+    color: #e0e0e0;
+}
+
+body.dark-mode .buttons button {
+    background-color: #2f855a; /* Verde oscuro */
+}
+
+body.dark-mode .buttons button:hover {
+    background-color: #2b6e4f; /* Verde más oscuro */
+}
+
+body.dark-mode .create button {
+    background-color: #2f855a; /* Verde oscuro */
+    box-shadow: 0 4px 8px rgba(47, 133, 90, 0.3);
+}
+
+body.dark-mode .create button:hover {
+    background-color: #2b6e4f; /* Verde más oscuro */
+    box-shadow: 0 6px 12px rgba(47, 133, 90, 0.4);
+}
+
+body.dark-mode .form-group button {
+    background-color: #059669; /* Verde oscuro */
+    box-shadow: 0 4px 8px rgba(5, 150, 105, 0.2);
+}
+
+body.dark-mode .form-group button:hover {
+    background-color: #047857; /* Verde más oscuro */
+    box-shadow: 0 6px 12px rgba(5, 150, 105, 0.3);
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    background-color: #2d482e;
+    color: #e0e0e0;
+    border-color: #2d482e;
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group select:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: #2d8a5b; /* Verde oscuro */
+    box-shadow: 0 0 0 2px rgba(47, 133, 90, 0.2);
+}
+
+body.dark-mode .navegate-group {
+    border-color: #2d482e;
+    background-color: #1e1e1e;
+}
+
+/* Ajuste del menú en modo oscuro */
+body.dark-mode .menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    font-size: 20px;
+    color: #2f855a; /* Verde oscuro */
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s all ease-in;
+    margin-left: 10px;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
+    color: #2b6e4f; /* Verde más oscuro */
+}
+
+/* Change menu toggle button color in dark mode */
+body.dark-mode .menu-toggle {
+    color: #2f855a; /* Verde oscuro cuando está en modo oscuro */
+}
+
+body.dark-mode .menu-toggle:hover {
+    color: #2b6e4f; /* Verde más oscuro */
+}
+
+/* Add these classes to handle sidebar toggling */
+.sidebar-hidden {
+    width: 70px;
+    transition: width 0.7s ease-in-out;
+    .span, .logo-text{
+        display: none;
+        border: none;
+    }
+}
+
+.sidebar {
+    transition: width 0.7s ease-in-out;
+}
+
+/* Estilos para la tabla tipo Excel */
+.excel-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.excel-row {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.2s ease;
+}
+
+.excel-row:last-child {
+    border-bottom: none;
+}
+
+.excel-row:hover {
+    background-color: #f0f7ff;
+}
+
+body.dark-mode .excel-row:hover {
+    background-color: #334155;
+}
+
+.header-row {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    border-bottom: 2px solid #d0d0d0;
+}
+
+body.dark-mode .header-row {
+    background-color: #1e293b;
+    border-bottom: 2px solid #334155;
+}
+
+.excel-cell {
+    padding: 30px 40px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-right: 1px solid #e0e0e0;
+    justify-content: center;
+}
+
+.excel-cell:last-child {
+    border-right: none;
+}
+
+body.dark-mode .excel-cell {
+    border-right: 1px solid #334155;
+}
+
+.excel-cell.actions {
+    justify-content: center;
+    flex: 1;
+}
+
+/* Ajustes para los botones de acción */
+.excel-cell .buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.excel-cell .buttons button {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.excel-cell .buttons button i {
+    margin: 0;
+}
+
+/* Ajustes para mejorar la visualización en la tabla */
+.info {
+    padding: 0;
+    max-height: 500px;
+}
+
+/* Ajustes para el tema oscuro */
+body.dark-mode .excel-table {
+    border-color: #334155;
+}
+
+body.dark-mode .excel-row {
+    border-bottom-color: #334155;
+}
+
+body.dark-mode .excel-cell {
+    color: #e0e0e0;
+}
+
+/* Estilos para el contenedor de filtros */
+.filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+    border-bottom: 1px solid #a5bed8;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+/* Estilos para los selects e inputs de filtro */
+.filter-container select,
+.filter-container input {
+    height: 36px;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 0 10px;
+    background-color: #f8f9fa;
+    font-size: 14px;
+    color: #333;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.filter-container select {
+    min-width: 150px;
+    cursor: pointer;
+}
+
+.filter-container input[type="date"] {
+    min-width: 160px;
+}
+
+.filter-container select:focus,
+.filter-container input:focus {
+    border-color: #2f855a;
+    box-shadow: 0 0 0 2px rgba(47, 133, 90, 0.2);
+    outline: none;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode .filter-container {
+    background-color: #1e1e1e;
+    border-color: #2d482e;
+}
+
+body.dark-mode .filter-container select,
+body.dark-mode .filter-container input {
+    background-color: #2d482e;
+    color: #e0e0e0;
+    border-color: #2d482e;
+}
+
+body.dark-mode .filter-container select:focus,
+body.dark-mode .filter-container input:focus {
+    border-color: #2d8a5b;
+    box-shadow: 0 0 0 2px rgba(47, 133, 90, 0.2);
+}
+
+/* Mensaje de no resultados */
+#sin-resultados {
+    text-align: center;
+    padding: 20px;
+    color: #718096;
+    font-style: italic;
+}
+
+body.dark-mode #sin-resultados {
+    color: #a0aec0;
+}
+
+/* Estilos mejorados para la sección de enlaces en la página de bienvenida */
+.container-links {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.container-links ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.container-links li {
+    width: 100%;
+    transition: transform 0.2s ease;
+}
+
+.container-links li:hover {
+    transform: translateX(5px);
+}
+
+.container-links a {
+    text-decoration: none;
+    color: #2f855a;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 15px 20px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.container-links a:hover {
+    color: #fff;
+    background-color: #2f855a;
+    border-left: 4px solid #1a4731;
+    box-shadow: 0 4px 10px rgba(47, 133, 90, 0.2);
+}
+
+.container-links a i {
+    font-size: 1.3rem;
+    margin-right: 15px;
+    min-width: 25px;
+    text-align: center;
+}
+
+.container-links a span.span {
+    font-size: 1.1rem;
+}
+
+/* Modificación de contenedor de datos para mejor presentación */
+.data-container {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    max-width: 800px;
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+.navegate-group {
+    height: auto;
+    padding: 25px;
+    background-color: #f9fafb;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.navegate-group h2 {
+    color: #2f855a;
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+div.info {
+    max-height: none;
+    padding: 25px;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode .container-links a {
+    background-color: #2d3748;
+    color: #68d391;
+}
+
+body.dark-mode .container-links a:hover {
+    background-color: #2f855a;
+    color: #fff;
+    border-left: 4px solid #9ae6b4;
+}
+
+body.dark-mode .data-container {
+    background-color: #1a202c;
+    border-color: #2d3748;
+}
+
+body.dark-mode .navegate-group {
+    background-color: #2d3748;
+    border-color: #4a5568;
+}
+
+body.dark-mode .navegate-group h2 {
+    color: #9ae6b4;
+}
+
+.status-select {
+    width: 150px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.status-select.updating {
+    opacity: 0.6;
+}
+
+.status-select.success {
+    background-color: #e6ffe6;
+    border-color: #4CAF50;
+}
