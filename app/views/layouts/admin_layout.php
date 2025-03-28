@@ -24,9 +24,9 @@
                     <ul>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'super_admin'): ?>
                             <li><a href="/usuario/view"><i class="fas fa-user-tag"></i><span class="span">Usuarios</span></a></li>
-                            <li><a href="/categoriadocumento/view"><i class="fas fa-users"></i><span class="span">Añadir Categorías</span></a></li>
-                            <li><a href="/tipoDoc/view"><i class="fas fa-file-alt"></i><span class="span">Documentos</span></a></li>
-                            <li><a href="./doc_layout.php"><i class="fas fa-folder"></i><span class="span">categoria</span></a></li>
+                            <li><a href="/categoriadocumento/view"><i class="fas fa-users"></i><span class="span">Categorías</span></a></li>
+                            <li><a href="/tipoDoc/view"><i class="fas fa-file-alt"></i><span class="span">Procesos</span></a></li>
+                            <li><a href="./doc_layout.php"><i class="fas fa-folder"></i><span class="span"></span></a></li>
                         <?php endif ?>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'coordinador'): ?>
                             <li><a href="/usuario/view"><i class="fas fa-user-tag"></i><span class="span">Usuarios</span></a></li>

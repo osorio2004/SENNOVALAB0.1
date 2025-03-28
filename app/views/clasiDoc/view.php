@@ -33,20 +33,20 @@
         <tbody>
             <?php foreach($clasiDocs as $clasiDoc): ?>
             <tr>
-                <td><?php echo htmlspecialchars($clasiDoc->id ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->creo ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->codigo ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->version ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->nombre ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->elaborado_por ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->revisado_por ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->aprobado_por ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->proceso ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->subproceso ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->ultima_fecha_revision ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->clasificacion ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->fecha_subido ?? ''); ?></td>
-                <td><?php echo htmlspecialchars($clasiDoc->aprobacion ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->id ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->creo ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->codigo ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->version ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->nombre ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->elaborado_por ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->revisado_por ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->aprobado_por ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->proceso ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->subproceso ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->ultima_fecha_revision ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->clasificacion ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->fecha_subido ?? ''); ?></td>
+                <td><?php echo htmlspecialchars($documento->aprobacion ?? ''); ?></td>
                 <td>
                     <a href="/clasiDoc/edit/<?php echo $clasiDoc->id; ?>" class="btn-edit">
                         <i class="fas fa-edit"></i>

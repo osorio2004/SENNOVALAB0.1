@@ -10,23 +10,7 @@
 </head>
 <body>
     <div class="doc-container">
-        <!-- Barra lateral -->
-        <aside class="doc-sidebar">
-            <div class="doc-header">
-                <a href="/" class="doc-logo">SENNOVALAB</a>
-                <button class="doc-toggle" id="docToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-            <nav class="doc-nav">
-                <a href="/tipoDoc/new" class="doc-nav-item">
-                    <i class="fas fa-plus"></i> Nuevo Documento
-                </a>
-                <a href="/proyecto/view" class="doc-nav-item">
-                    <i class="fas fa-home"></i> Volver al Inicio
-                </a>
-            </nav>
-        </aside>
+        
 
         <!-- Contenido principal -->
         <main class="doc-main">

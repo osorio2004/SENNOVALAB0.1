@@ -7,7 +7,7 @@ require_once __DIR__ . "/BaseModel.php";
 
 class ClasiDocModel extends BaseModel {
     public function __construct() {
-        $this->table = "clasidocs"; // Cambia esto a clasidocs
+        $this->table = "documento"; // Cambia esto a clasidocs
         parent::__construct();
     }
 
