@@ -13,12 +13,23 @@ class ClasiDocModel extends BaseModel {
 
     public function getAll(): array {
         try {
-            $sql = "SELECT * FROM {$this->table}"; // Selecciona todos los campos
+            $sql = "SELECT d.*, 
+                    u1.nombre as creador,
+                    u2.nombre as elaborador,
+                    u3.nombre as aprobador,
+                    c.nombre as categoria
+                    FROM documento d
+                    LEFT JOIN usuarios u1 ON d.idUsuarioCreador = u1.id
+                    LEFT JOIN usuarios u2 ON d.idUsuarioElaboro = u2.id
+                    LEFT JOIN usuarios u3 ON d.idUsuarioAprobo = u3.id
+                    LEFT JOIN categoriadocumento c ON d.idCategoria = c.idCategoria
+                    ORDER BY d.fechaCreacion DESC";
+            
             $statement = $this->dbConnection->prepare($sql);
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $ex) {
-            echo "Error al obtener documentos: " . $ex->getMessage();
+            error_log("Error al obtener documentos: " . $ex->getMessage());
             return [];
         }
     }
@@ -38,24 +49,52 @@ class ClasiDocModel extends BaseModel {
 
     public function saveNewDoc($data): bool {
         try {
-            $sql = "INSERT INTO clasidocs (id, creo, codigo, version, nombre, 
-                    elaborado_por, revisado_por, aprobado_por, proceso, 
-                    subproceso, clasificacion) 
-                    VALUES (:id, :creo, :codigo, :version, :nombre, 
-                    :elaborado_por, :revisado_por, :aprobado_por, :proceso, 
-                    :subproceso, :clasificacion)";
+            $sql = "INSERT INTO documento (
+                idDocumento,
+                titulo,
+                fechaCreacion,
+                fechaEdicion,
+                estado,
+                idUsuarioCreador,
+                idCategoria,
+                codigo,
+                version,
+                idUsuarioAprobo,
+                idUsuarioElaboro
+            ) VALUES (
+                :id,
+                :nombre,
+                CURDATE(),
+                CURDATE(),
+                'Activo',
+                :idUsuarioCreador,
+                :idCategoria,
+                :codigo,
+                :version,
+                :idUsuarioAprobo,
+                :idUsuarioElaboro
+            )";
                     
             $statement = $this->dbConnection->prepare($sql);
-            return $statement->execute($data);
+            return $statement->execute([
+                ':id' => $data['id'],
+                ':nombre' => $data['nombre'],
+                ':idUsuarioCreador' => $data['elaborado_por'],
+                ':idCategoria' => $data['clasificacion'],
+                ':codigo' => $data['codigo'],
+                ':version' => $data['version'],
+                ':idUsuarioAprobo' => $data['aprobado_por'],
+                ':idUsuarioElaboro' => $data['elaborado_por']
+            ]);
         } catch (PDOException $ex) {
-            echo "Error al guardar documento: " . $ex->getMessage();
+            error_log("Error al guardar documento: " . $ex->getMessage());
             return false;
         }
     }
 
     public function getClasiDoc($id) {
         try {
-            $sql = "SELECT * FROM {$this->table} WHERE id = :id";
+            $sql = "SELECT * FROM {$this->table} WHERE idDocumento = :id";
             $statement = $this->dbConnection->prepare($sql);
             $statement->bindValue(':id', $id);
             $statement->execute();

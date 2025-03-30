@@ -1,10 +1,6 @@
 <div class="container">
-    <div class="header-container">
-        <h2>Nuevo Documento</h2>
-    </div>
     
-    <form action="/clasiDoc/create" method="POST" class="form-container">
-        <!-- Campo oculto para ID aleatorio -->
+    <form action="/clasiDoc/create" method="POST" class="form-container" enctype="multipart/form-data">
         <input type="hidden" name="id" id="randomId">
         
         <div class="form-group">
@@ -47,22 +43,28 @@
             <label for="subproceso">Subproceso:</label>
             <input type="text" id="subproceso" name="subproceso" required>
         </div>
-        <div class="form-group">
-            <label for="file">Archivo:</label>
-            <input type="file" id="file" name="file" required>
-        </div>
 
         <div class="form-group">
             <label for="clasificacion">Clasificación:</label>
             <select id="clasificacion" name="clasificacion" required>
                 <option value="">Seleccione una clasificación</option>
-                <option value="Gestion" <?php echo ($_GET['tipo'] == 'gestion') ? 'selected' : ''; ?>>Gestión</option>
-                <option value="Administrativo" <?php echo ($_GET['tipo'] == 'administrativo') ? 'selected' : ''; ?>>Administrativo</option>
-                <option value="Personal" <?php echo ($_GET['tipo'] == 'personal') ? 'selected' : ''; ?>>Personal</option>
-                <option value="Financiero" <?php echo ($_GET['tipo'] == 'financiero') ? 'selected' : ''; ?>>Financiero</option>
-                <option value="Legal" <?php echo ($_GET['tipo'] == 'legal') ? 'selected' : ''; ?>>Legal</option>
-                <option value="Tecnico" <?php echo ($_GET['tipo'] == 'tecnico') ? 'selected' : ''; ?>>Técnico</option>
+                <option value="Gestion">Gestión</option>
+                <option value="Administrativo">Administrativo</option>
+                <option value="Personal">Personal</option>
+                <option value="Financiero">Financiero</option>
+                <option value="Legal">Legal</option>
+                <option value="Tecnico">Técnico</option>
             </select>
+        </div>
+
+        <div class="form-group">
+            <label for="file">Archivo:</label>
+            <input type="file" id="file" name="file" 
+                   accept=".doc,.docx,.jpg,.jpeg,.png,.txt" required>
+        </div>
+        <div class="form-group">
+            <label for="file">Observaciones:</label>
+            <input type="text" id="observaciones" name="observaciones">
         </div>
 
         <div class="form-actions">

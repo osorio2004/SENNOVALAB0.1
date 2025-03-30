@@ -6,6 +6,7 @@
     <title><?php echo $titulo ?? 'Clasificación de Documentos'; ?></title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/classification_layout.css">
+    <link rel="stylesheet" href="/css/formDoc.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -23,5 +24,5 @@
             <?php include_once $content; ?>
         </main>
     </div>
-</body>
+    <script src="/js/document-management.js" defer></script></body>
 </html>

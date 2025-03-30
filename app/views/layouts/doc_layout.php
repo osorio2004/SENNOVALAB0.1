@@ -10,83 +10,105 @@
 </head>
 <body>
     <div class="doc-container">
-        
-
-        <!-- Contenido principal -->
         <main class="doc-main">
             <header class="doc-top-header">
                 <h1><?php echo $titulo; ?></h1>
                 <div class="doc-actions">
                     <div class="doc-search">
-                        <input type="text" placeholder="Buscar documentos...">
+                        <input type="text" id="searchInput" placeholder="Buscar documentos...">
                         <i class="fas fa-search"></i>
                     </div>
                 </div>
             </header>
             
-            <div class="priv"> 
-            <a href="/clasiDoc/view">
-            <div class="doc-content">
-             <h2>Documentos de Gestión</h2>
+            <div class="priv" id="documentGrid">
+                <a href="/clasiDoc/view" class="doc-content" data-search-term="Documentos de Texto">
+                    <h2>Documentos de Texto</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Imagenes">
+                    <h2>Imagenes</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Datos numéricos">
+                    <h2>Datos numéricos</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Archivos multimedia">
+                    <h2>Archivos multimedia</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Contratos">
+                    <h2>Contratos</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Certificados">
+                    <h2>Certificados</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Registros de actividad">
+                    <h2>Registros de actividad</h2>
+                </a>
+                <a href="/clasiDoc/view" class="doc-content" data-search-term="Informes">
+                    <h2>Informes</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Investigaciones y estudios">
+                    <h2>Investigaciones y estudios</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Anexos">
+                    <h2>Anexos</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Documentos">
+                    <h2>Documentos</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Formularios">
+                    <h2>Formularios</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Propuestas">
+                    <h2>Propuestas</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Correspondencia">
+                    <h2>Correspondencia</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Licencias">
+                    <h2>Licencias</h2>
+                </a>
+                <a href="../clasiDoc/view" class="doc-content" data-search-term="Estudios de mercado">
+                    <h2>Estudios de mercado</h2>
+                </a>
             </div>
-            </a>
-            <a href="../clasiDoc/view">
-            <div class="doc-content">
-             <h2>Documentos Administrativos</h2>
-            </div>
-            </a>
-            <a href="../clasiDoc/view">
-            <div class="doc-content">
-             <h2>Documentos Personales</h2>
-            </div>
-            </a>
-            <a href="../clasiDoc/view">
-            <div class="doc-content">
-             <h2>Documentos Financieros</h2>
-            </div>
-            </a>
-            <a href="../clasiDoc/view">
-            <div class="doc-content">
-             <h2>Documentos Legales</h2>
-            </div>
-            </a>
-            <a href="../clasiDoc/view">
-            <div class="doc-content">
-             <h2>Documentos Técnicos</h2>
-            </div>
-            </a>
-            <a href="../clasiDoc/view">
-            <div class="doc-content">
-             <h2>Documentos de Calidad</h2>
-            </div>
-            </a>
-            <a href="/clasiDoc/view">
-            <div class="doc-content">
-             <h2>Documentos de Metrologia</h2>
-            </div>
-            </a>
-            <a href="../clasiDoc/view">
-            <div class="doc-content">
-             <h2>Documentos de Proyectos</h2>
-            </div>
-            </a>
-            <a href="../clasiDoc/view">
-            <div class="doc-content">
-             <h2>Documentos de Marketing</h2>
-            </div>
-            </a>
-            </div>
-
         </main>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const docToggle = document.getElementById('docToggle');
-            const docContainer = document.querySelector('.doc-container');
-            
-            docToggle.addEventListener('click', function() {
-                docContainer.classList.toggle('sidebar-collapsed');
+            const searchInput = document.getElementById('searchInput');
+            const documentGrid = document.getElementById('documentGrid');
+            const documentCards = documentGrid.querySelectorAll('.doc-content');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+
+                documentCards.forEach(card => {
+                    const cardText = card.getAttribute('data-search-term').toLowerCase();
+                    
+                    if (searchTerm === '' || cardText.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // If no results, show a message
+                const visibleCards = Array.from(documentCards).filter(card => card.style.display !== 'none');
+                
+                // Remove existing no results message
+                const existingNoResultsMessage = document.getElementById('no-results-message');
+                if (existingNoResultsMessage) {
+                    existingNoResultsMessage.remove();
+                }
+
+                if (visibleCards.length === 0 && searchTerm !== '') {
+                    const noResultsMessage = document.createElement('div');
+                    noResultsMessage.id = 'no-results-message';
+                    noResultsMessage.className = 'doc-content';
+                    noResultsMessage.innerHTML = `<h2>No se encontraron resultados para "${searchTerm}"</h2>`;
+                    documentGrid.appendChild(noResultsMessage);
+                }
             });
         });
     </script>

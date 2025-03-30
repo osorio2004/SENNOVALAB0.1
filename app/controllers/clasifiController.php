@@ -20,12 +20,8 @@ public function view(){
     $clasiDocObj = new ClasiDocModel();
     $clasiDocs = $clasiDocObj->getAll();
     
-    $data = [
-        "clasiDocs" => $clasiDocs,
-        "titulo" => "Lista de Clasificación de Documentos"
-    ];
     $this->layout = "classification_layout";
-    $this->render('clasiDoc/view.php', $data);
+    $this->render('clasiDoc/view.php', ['clasiDocs' => $clasiDocs]);
 }
 
 public function new() {
@@ -39,24 +35,24 @@ public function new() {
 
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $clasiDocObj = new ClasiDocModel();
-            
             $data = [
                 'id' => $_POST['id'],
-                'creo' => $_SESSION['usuario'] ?? '',
-                'codigo' => $_POST['codigo'],
-                'version' => $_POST['version'],
                 'nombre' => $_POST['nombre'],
-                'elaborado_por' => $_POST['elaborado_por'],
-                'revisado_por' => $_POST['revisado_por'],
+                'version' => $_POST['version'],
+                'codigo' => $_POST['codigo'],
+                'elaborado_por' => $_SESSION['id'] ?? 1, // ID del usuario en sesión
                 'aprobado_por' => $_POST['aprobado_por'],
-                'proceso' => $_POST['proceso'],
-                'subproceso' => $_POST['subproceso'],
                 'clasificacion' => $_POST['clasificacion']
             ];
-    
-            $clasiDocObj->saveNewDoc($data);
-            $this->redirectTo("clasiDoc/view");
+
+            $clasiDocObj = new ClasiDocModel();
+            if ($clasiDocObj->saveNewDoc($data)) {
+                $_SESSION['mensaje'] = "Documento guardado exitosamente";
+                $this->redirectTo("clasiDoc/view");
+            } else {
+                $_SESSION['error'] = "Error al guardar el documento";
+                $this->redirectTo("clasiDoc/new");
+            }
         }
     }
 
