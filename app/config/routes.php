@@ -75,6 +75,10 @@ return [
         "controller" => "App\Controllers\UsuarioController",
         "action" => "view"
     ],
+    "/usuario/view/(\d+)" => [
+        "controller" => "App\Controllers\UsuarioController",
+        "action" => "viewOne"
+    ],
     "/usuario/new" => [
         "controller" => "App\Controllers\UsuarioController",
         "action" => "new"
@@ -99,6 +103,8 @@ return [
         "controller" => "App\Controllers\UsuarioController",
         "action" => "remove"
     ],
+
+    //Ruitas tipoDoc
     '/tipoDoc/index' => [
         "controller" => 'App\Controllers\TipoDocController',
         "action" => 'index'
@@ -132,38 +138,38 @@ return [
         "action" => 'delete'
     ],
     '/clasiDoc/index' => [
-    "controller" => 'App\Controllers\ClasiDocController',
-    "action" => 'index'
-],
-'/clasiDoc/view' => [
-    "controller" => 'App\Controllers\ClasiDocController',
-    "action" => 'view'
-],
-'/clasiDoc/new' => [
-    "controller" => 'App\Controllers\ClasiDocController',
-    "action" => 'new'
-],
-'/clasiDoc/create' => [
-    "controller" => 'App\Controllers\ClasiDocController',
-    "action" => 'create'
-],
-'/clasiDoc/view/(\d+)' => [
-    "controller" => 'App\Controllers\ClasiDocController',
-    "action" => 'viewOne'
-],
-'/clasiDoc/edit/(\d+)' => [
-    "controller" => 'App\Controllers\ClasiDocController',
-    "action" => 'edit',
-    "params" => ['id']
-],
-'/clasiDoc/update' => [
-    "controller" => 'App\Controllers\ClasiDocController',
-    "action" => 'update'
-],
-'/clasiDoc/delete/(\d+)' => [
-    "controller" => 'App\Controllers\ClasiDocController',
-    "action" => 'delete'
-],
+        "controller" => 'App\Controllers\ClasiDocController',
+        "action" => 'index'
+    ],
+    '/clasiDoc/view' => [
+        "controller" => 'App\Controllers\ClasiDocController',
+        "action" => 'view'
+    ],
+    '/clasiDoc/new' => [
+        "controller" => 'App\Controllers\ClasiDocController',
+        "action" => 'new'
+    ],
+    '/clasiDoc/create' => [
+        "controller" => 'App\Controllers\ClasiDocController',
+        "action" => 'create'
+    ],
+    '/clasiDoc/view/(\d+)' => [
+        "controller" => 'App\Controllers\ClasiDocController',
+        "action" => 'viewOne'
+    ],
+    '/clasiDoc/edit/(\d+)' => [
+        "controller" => 'App\Controllers\ClasiDocController',
+        "action" => 'edit',
+        "params" => ['id']
+    ],
+    '/clasiDoc/update' => [
+        "controller" => 'App\Controllers\ClasiDocController',
+        "action" => 'update'
+    ],
+    '/clasiDoc/delete/(\d+)' => [
+        "controller" => 'App\Controllers\ClasiDocController',
+        "action" => 'delete'
+    ],
 
     // Rutas de la Página Principal
     "/main" => [
