@@ -13,7 +13,7 @@
     <h2>Iniciar Sesión</h2>
     <form action="/login/init" method="post">
         <div class="input-group">
-            <label for="txtUser">Email</label>
+            <label for="txtUser">Emails</label>
             <input type="text" name="txtUser" id="txtUser" required>
         </div>
         <div class="input-group">
