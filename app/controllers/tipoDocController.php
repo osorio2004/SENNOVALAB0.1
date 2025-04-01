@@ -19,7 +19,7 @@ class TipoDocController extends BaseController {
         $tiposDocs = $tipoDocObj->getAll();
         $data = [
             "tiposDocs" => $tiposDocs,
-            "titulo" => "Lista de Tipos de Documentos"
+            "titulo" => "Lista de procesos"
         ];
         $this->render('tipoDoc/view.php', $data);
     }
