@@ -1,81 +1,123 @@
-/* style_login.css */
 body {
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full height for centering */
+    height: 100vh;
+    background-color: #2f855a;
     margin: 0;
 }
 
 .login-container {
-    height: 450px; /* Increased height for better layout */
-    width: 300px; /* Increased width for better layout */
-    padding: 2rem; /* More padding for a spacious feel */
-    border-radius: 1rem; /* Softer corners */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Softer shadow */
-    border: 2px solid rgba(33, 126, 49, 0.8); /* Darker green */
-    background-color: #ececec; /* Light green background */
     display: flex;
-    align-items: center;
+    width: 800px;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.left-section {
+    flex: 1;
+    display: flex;
     justify-content: center;
-    flex-direction: column;
+    align-items: flex-start;
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+.logo-container {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo-container img {
+    width: 100%;
+    max-width:  px;
+}
+
+.right-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f5f5;
+}
+
+.right-section img {
+    width: 100%;
+    height: 100%;
+}
+
+.form-section {
+    flex: 2;
+    padding: 40px;
+    text-align: center;
 }
 
 h2 {
-    color: #2e7d32; /* Darker green for the heading */
-    margin-bottom: 1.5rem; /* Spacing below the heading */
-    font-family: 'Arial', sans-serif; /* Modern font */
-    font-size: 1.5rem; /* Larger font size */
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+p {
+    font-size: 14px;
+    color: #3d3d3d;
+    margin-bottom: 20px;
 }
 
 .input-group {
-    margin-bottom: 1.5rem; /* Increased margin for spacing */
-    width: 100%; /* Full width for input groups */
-}
-
-.input-group label {
-    display: block;
     text-align: left;
-    color: #2e7d32; /* Darker green for labels */
-    margin-bottom: 0.5rem; /* Spacing below labels */
-    font-weight: bold; /* Bold labels for emphasis */
+    margin-bottom: 15px;
 }
 
-.input-group input {
-    padding: 0.8rem; /* Increased padding for comfort */
-    border: 1px solid #2e7d32; /* Light green border */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
     width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1rem; /* Modern font size */
-    transition: border-color 0.3s; /* Smooth transition for focus */
-    color: #2e7d32;
 }
 
-.input-group input:focus {
-    border-color: #66bb6a; /* Focused border color */
-    outline: none; /* Remove default outline */
+.links {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 20px;
 }
 
 button {
-    background-color: #4caf50; /* Bright green */
-    border: none; /* No border for a cleaner look */
-    border-radius: 5px;
-    padding: 0.8rem;
-    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    background-color: #2f855a;
     color: white;
-    font-size: 1rem; /* Modern font size */
-    transition: background-color 0.3s; /* Smooth transition for hover */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 button:hover {
-    background-color: #388e3c; /* Darker green on hover */
+    background-color: #139b57;
 }
 
 .errors {
-    color: #d32f2f; /* Red for errors */
-    margin-bottom: 1rem; /* Increased margin for spacing */
-    border: 1px solid #d32f2f; /* Red border */
+    color: #d32f2f;
+    margin-bottom: 1rem;
+    border: 1px solid #d32f2f;
     padding: 0.5rem;
     border-radius: 5px;
-    background-color: #ffebee; /* Light red background for errors */
+    background-color: #ffebee;
+    margin-top: 20px;
 }
