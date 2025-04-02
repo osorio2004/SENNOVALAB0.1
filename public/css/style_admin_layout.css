@@ -737,3 +737,116 @@ body.dark-mode .navegate-group h2 {
     background-color: #e6ffe6;
     border-color: #4CAF50;
 }
+/* Estilos para la información del usuario */
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-icon {
+    font-size: 2.5rem;
+    margin-right: 15px;
+    color: #fff;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-email {
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.user-role {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+}
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    height: 100%; /* Asegura que ocupe todo el alto */
+    position: relative; /* Para posicionar el menú de cerrar sesión */
+}
+
+.menu {
+    flex-grow: 1; /* Hace que el menú ocupe todo el espacio disponible */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu ul {
+    width: 100%;
+    padding: 1rem 0;
+    flex-grow: 1; /* Hace que la lista ocupe todo el espacio */
+}
+
+/* Estilo específico para el ítem de cerrar sesión */
+.menu .logout-item {
+    margin-top: auto; /* Empuja el elemento hacia abajo */
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+}
+.sidebar {
+    width: 250px;
+    background-color: #2f855a;
+    color: white;
+    height: 100vh; /* Cambiado de 165vh a 100vh para que ocupe solo el viewport */
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    height: 100%; /* Ocupa todo el alto disponible */
+    position: relative;
+}
+
+.menu {
+    width: 100%;
+    flex-grow: 1; /* Ocupa todo el espacio disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye el espacio entre elementos */
+}
+
+.menu ul {
+    width: 100%;
+    padding: 1rem 0;
+}
+
+/* Estilo específico para el contenedor del botón de cerrar sesión */
+.logout-container {
+    margin-top: 10px; /* Empuja el contenedor hacia abajo */
+    padding: 30px 0;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu a {
+    transition: .2s all ease-in;
+    padding: 1rem;
+    display: flex;
+}
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-radius: 6px;
+}
