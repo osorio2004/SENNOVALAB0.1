@@ -20,6 +20,18 @@
                     <img src="/img/LOGOTIPO SENNOVALAB 2024-03_blanco.png" alt="logoImg">
                     <span class="logo-text">Gestor Documentacion</span>
                 </div>
+                
+                <!-- Sección para mostrar información del usuario -->
+                <div class="user-info">
+                    <div class="user-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-email"><?php echo isset($_SESSION['email']) ? $_SESSION['email'] : 'Usuario'; ?></span>
+                        <span class="user-role"><?php echo isset($_SESSION['rol']) ? ucfirst(str_replace('_', ' ', $_SESSION['rol'])) : 'Rol no definido'; ?></span>
+                    </div>
+                </div>
+                
                 <nav class="menu">
                     <ul>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'super_admin'): ?>
@@ -34,9 +46,13 @@
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'trabajador'): ?>
                             <li><a href="/tipoDoc/view"><i class="fas fa-file-alt"></i><span class="span">Documentos</span></a></li>
                         <?php endif ?>
-                        <li>
+                    </ul>
+                    
+                    <!-- Item de cerrar sesión separado -->
+                    <ul>
+                        <li class="logout-item">
                             <a href="/login/logout">
-                                <i class="fas fa-sign-in-alt"></i>
+                                <i class="fas fa-sign-out-alt"></i>
                                 <span class="span">Cerrar Sesión</span>
                             </a>
                         </li>
