@@ -7,7 +7,8 @@
     --transition-speed: 0.3s;
 }
 
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
@@ -22,11 +23,18 @@ body, html {
     padding: 20px;
 }
 
+.back a img {
+    width: 34px;
+    height: 34px;
+    margin: 10px 0 0 0;
+}
+
 .doc-top-header {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
     align-items: center;
-    margin-bottom: 30px;
+    margin: 0 0 30px 0 ;
     padding-bottom: 15px;
     border-bottom: 2px solid var(--primary-color);
 }
@@ -38,12 +46,11 @@ body, html {
 }
 
 .doc-search {
-    display: flex;
     align-items: center;
     background-color: #ffffff;
     border-radius: 30px;
     padding: 10px 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .doc-search input {
@@ -70,13 +77,13 @@ body, html {
     text-decoration: none;
     color: var(--text-dark);
     transition: all var(--transition-speed);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     display: block;
 }
 
 .doc-content:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 .doc-content h2 {

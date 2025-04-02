@@ -36,6 +36,12 @@ body {
     overflow: hidden;
 }
 
+.back a img {
+    width: 34px;
+    height: 34px;
+    margin: 10px 0 0 0;
+}
+
 .top-header {
     background: #2f855a;
     color: white;
@@ -45,7 +51,7 @@ body {
 
 .header-flex {
     display: flex;
-    justify-content: space-between;
+    gap: 1rem;
     align-items: center;
 }
 
@@ -298,28 +304,17 @@ body {
 }
 
 .btn-add {
-    display: flex; 
-    text-align: center;
-    justify-content: center;
+    display: flex;
     align-items: center;
-    width: 60px;
-    height: 60px;
-    background-color: #007bff;
     color: white;
-    font-size: 30px;
-    border-radius: 50%;
     text-decoration: none;
-    transition: background 0.3s, transform 0.2s;
-}
-
-.btn-add:hover {
-    background-color: #0056b3;
-    transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
 }
 
 .mas {
+    position: fixed;
     font-weight: bold;
     font-size: 40px;
+    right: 0;
 }
 
 .btn-submit {

@@ -7,7 +7,7 @@ require_once MAIN_APP_ROUTE."../models/TipoDocModel.php";
 class TipoDocController extends BaseController {
     public function __construct() {
         parent::__construct();
-        $this->layout = "doc_layout"; // Cambiamos el layout por defecto
+        $this->layout = "admin_layout"; // Cambiamos el layout por defecto
     }
     
     public function index(){

@@ -7,9 +7,9 @@ use App\Models\DocumentoModel;
 require_once 'baseController.php';
 require_once MAIN_APP_ROUTE . '../models/DocumentoModel.php';
 
-class DocumentoController extends BaseController {
+class DocumentosController extends BaseController {
     public function __construct() {
-        $this->layout = "admin_layout";
+        $this->layout = "admin_layout"; // Usar el layout de admin
         parent::__construct();
     }
 
@@ -18,17 +18,11 @@ class DocumentoController extends BaseController {
         $documentos = $documentoObj->getAll();
         $data = [
             "documentos" => $documentos,
-            "title" => "Documentos"
+            "titulo" => "Documentos"
         ];
-        $this->render('documento/viewDocumento.php', $data);
+        $this->render('documento/viewDocumento.php', $data); // Cambia la vista según tu estructura
     }
 
-    public function new() {
-        $data = [
-            "title" => "Nuevo Documento"
-        ];
-        $this->render('documento/newDocumento.php', $data);
-    }
 
     public function create() {
         if (isset($_POST['txtTitulo'], $_POST['txtFechaCreacion'], $_POST['txtFechaEdicion'], $_POST['txtEstado'], $_POST['txtIdUsuarioCreador'], $_POST['txtIdCategoria'], $_POST['txtCodigo'], $_POST['txtVersion'], $_POST['txtIdUsuarioAprobo'], $_POST['txtIdUsuarioElaboro'])) {

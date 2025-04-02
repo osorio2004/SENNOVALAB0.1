@@ -15,7 +15,7 @@
         foreach ($usuarios as $usuario) {
             echo
             "<div class='record'>
-                <span>ID: $usuario->id - Nombre: $usuario->nombre</span>
+                <span>Nombre: $usuario->nombre</span>
                 <div class='buttons'>
                     <a href='/usuario/view/$usuario->id'> <button>Consultar</button> </a> 
                     <a href='/usuario/edit/$usuario->id'> <button>Editar</button> </a> 
