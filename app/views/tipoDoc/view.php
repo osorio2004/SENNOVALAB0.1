@@ -28,14 +28,27 @@
                 </header>
                 <div class="priv">
                     <a href="/clasiDoc/view" class="doc-content" data-search-term="Documentos de Texto">
-                        <h2>Documentos de Texto</h2>
+                        <h2>Manual del sistema de gestion documental</h2>
                     </a>
                     <a href="../clasiDoc/view" class="doc-content" data-search-term="Imagenes">
-                        <h2>Imagenes</h2>
+                        <h2>Caracterizacion proceso de gestion de I+D+i</h2>
                     </a>
                     <a href="../clasiDoc/view" class="doc-content" data-search-term="Datos numéricos">
-                        <h2>Datos numéricos</h2>
+                        <h2>Guia para gestion documental</h2>
                     </a>
+                    <a href="../clasiDoc/view" class="doc-content" data-search-term="Datos numéricos">
+                        <h2>Guia para la gestion de riesgos en proyectos I+D+i</h2>
+                    </a>
+                    <a href="../clasiDoc/view" class="doc-content" data-search-term="Datos numéricos">
+                        <h2>Guia de desarrollo de la creatividad</h2>
+                    </a>
+                    <a href="../clasiDoc/view" class="doc-content" data-search-term="Datos numéricos">
+                        <h2>Guia de Formulacion de proyectos de I+D+i</h2>
+                    </a>
+                    <a href="../clasiDoc/view" class="doc-content" data-search-term="Datos numéricos">
+                        <h2>Procedimineto gestion proyectos I+D+i</h2>
+                    </a>
+                    
                 </div>
                 <div class="info">
                     <?php if (isset($tiposDocs) && is_array($tiposDocs)): ?>

@@ -137,6 +137,8 @@
             "controller" => 'App\Controllers\TipoDocUseController',
             "action" => 'delete'
         ],
+        //ClasiDoc
+        
         '/clasiDoc/index' => [
             "controller" => 'App\Controllers\ClasiDocController',
             "action" => 'index'
