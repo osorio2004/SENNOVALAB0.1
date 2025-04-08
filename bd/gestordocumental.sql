@@ -38,7 +38,16 @@ CREATE TABLE `categoriadocumento` (
 --
 
 INSERT INTO `categoriadocumento` (`idCategoria`, `nombre`, `descripcion`) VALUES
-(1, 'flexiones', 'puedo hacer flexiones y saltos al mismo tiempo');
+(1, 'General SENNOVALAB', ''),
+(2, 'Gestion de I+D+i', ''),
+(3, 'Gestion de evaluacion y control', ''),
+(4, 'Gestion de infraestructura y logistica', ''),
+(5, 'Direccionamiento estrategico', ''),
+(6, 'Gestion de innovacion y la competitividad', ''),
+(7, 'Gestion recursos financieros', ''),
+(8, 'Documental SIGA', ''),
+(9, 'Desarrollo organizacional SIGA', ''),
+(10, 'Gestion de innovacion y la competitividad SIGA', '');
 
 -- --------------------------------------------------------
 
