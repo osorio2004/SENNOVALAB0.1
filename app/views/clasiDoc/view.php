@@ -40,18 +40,16 @@
                             <th>Código</th>
                             <th>Versión</th>
                             <th>Nombre</th>
-                            <th class="truncate">Elaborado Por</th>
-                            <th class="truncate">Revisado Por</th>
-                            <th class="truncate">Aprobado Por</th>
-                            <th>Proceso</th>
-                            <th>Subproceso</th>
+                            <th>Elaborado Por</th>
+                            <th>Revisado Por</th>
+                            <th>Aprobado Por</th>
+                            <th>Proceso</th> <!-- Nueva columna -->
+                            <th>Subproceso</th> <!-- Nueva columna -->
                             <th>Última Revisión</th>
                             <th>Clasificación</th>
                             <th>Fecha Subido</th>
                             <th>Aprobación</th>
                             <th>Acciones</th>
-                            <th>Retención</th>
-                            <th>Documento Fuente</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,25 +59,21 @@
                                 <td><?php echo htmlspecialchars($clasiDoc->idUsuarioCreador ?? ''); ?></td>
                                 <td><?php echo htmlspecialchars($clasiDoc->codigo ?? ''); ?></td>
                                 <td><?php echo htmlspecialchars($clasiDoc->version ?? ''); ?></td>
-                                <td class="truncate"><?php echo htmlspecialchars($clasiDoc->titulo ?? ''); ?></td>
+                                <td><?php echo htmlspecialchars($clasiDoc->titulo ?? ''); ?></td>
                                 <td><?php echo htmlspecialchars($clasiDoc->idUsuarioElaboro ?? ''); ?></td>
                                 <td><?php echo htmlspecialchars($clasiDoc->revisado_por ?? ''); ?></td>
                                 <td><?php echo htmlspecialchars($clasiDoc->idUsuarioAprobo ?? ''); ?></td>
-                                <td><?php echo htmlspecialchars($clasiDoc->proceso ?? ''); ?></td>
-                                <td><?php echo htmlspecialchars($clasiDoc->subproceso ?? ''); ?></td>
+                                <td><?php echo htmlspecialchars($clasiDoc->proceso ?? ''); ?></td> <!-- Nueva celda -->
+                                <td><?php echo htmlspecialchars($clasiDoc->subproceso ?? ''); ?></td> <!-- Nueva celda -->
                                 <td><?php echo htmlspecialchars($clasiDoc->fechaEdicion ?? ''); ?></td>
                                 <td><?php echo htmlspecialchars($clasiDoc->idCategoria ?? ''); ?></td>
                                 <td><?php echo htmlspecialchars($clasiDoc->fechaCreacion ?? ''); ?></td>
                                 <td><?php echo htmlspecialchars($clasiDoc->estado ?? ''); ?></td>
                                 <td>
-                                    <a href="<?php echo '/clasiDoc/edit/' . $clasiDoc->idDocumento; ?>"
-                                        class="btn-edit"
-                                        title="Editar documento">
+                                    <a href="<?php echo '/clasiDoc/edit/' . $clasiDoc->idDocumento; ?>" class="btn-edit" title="Editar documento">
                                         <i class="fas fa-edit"></i> Editar
                                     </a>
                                 </td>
-                                <td><?php echo htmlspecialchars($clasiDoc->retencion ?? ''); ?></td>
-                                <td><?php echo htmlspecialchars($clasiDoc->documento_fuente ?? ''); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

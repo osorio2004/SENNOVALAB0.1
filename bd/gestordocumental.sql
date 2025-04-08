@@ -61,6 +61,8 @@ CREATE TABLE `documento` (
   `fechaCreacion` date NOT NULL,
   `fechaEdicion` date NOT NULL,
   `estado` varchar(45) NOT NULL,
+  `proceso` varchar (45) NOT NULL,
+  `subproceso` varchar (45) NOT NULL,
   `idUsuarioCreador` int(11) NOT NULL,
   `idCategoria` int(11) NOT NULL,
   `codigo` varchar(255) NOT NULL,

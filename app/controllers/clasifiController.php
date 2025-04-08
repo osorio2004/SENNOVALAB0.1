@@ -8,12 +8,8 @@ require_once __DIR__ . "/../models/ClasifiModel.php";
 class ClasiDocController extends BaseController {
     public function __construct() {
         parent::__construct();
-        $this->layout = "doc_layout";
-    }
-    
-    public function index(){
-        $this->view();
-    }     
+        $this->layout = "tipoDoc";
+    }   
     
     
 public function view(){
