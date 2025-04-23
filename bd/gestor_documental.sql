@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-04-2025 a las 05:35:18
+-- Tiempo de generación: 23-04-2025 a las 18:30:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -104,18 +104,10 @@ CREATE TABLE `proceso` (
 --
 
 CREATE TABLE `rol` (
-  `idrol` int(11) NOT NULL,
-  `tipoRol` varchar(45) NOT NULL
+  `idRol` int(11) NOT NULL,
+  `nombreRol` varchar(50) NOT NULL,
+  `Permisos` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Volcado de datos para la tabla `rol`
---
-
-INSERT INTO `rol` (`idrol`, `tipoRol`) VALUES
-(1, 'Super Admin'),
-(2, 'Editor'),
-(3, 'Visualizador');
 
 -- --------------------------------------------------------
 
@@ -142,17 +134,25 @@ INSERT INTO `tipodocumental` (`idTipoDocumental`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuario` (
-  `idusuario` int(11) NOT NULL,
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
-  `correoElectronico` varchar(50) NOT NULL,
-  `contraseña` varchar(255) NOT NULL,
-  `fkIdRol` int(11) NOT NULL
+  `email` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `rol` enum('super_admin','coordinador','trabajador') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `password`, `rol`) VALUES
+(1, 'Juan', '', 'juan@example.com', '$2y$10$p5MPYWBTRUBfpy2zVVBwN.akXweMdkHhV1e1QqCiKSz0zuris12g.', 'super_admin'),
+(2, 'samuel', '', 'samuel@gmail.com', '$2y$10$Gs8QPoCI43Aq9RYWDWchq.2Az7xEFuxji7PAhSVj4GaJJJPQ2T192', 'super_admin');
 
 --
 -- Índices para tablas volcadas
@@ -198,7 +198,7 @@ ALTER TABLE `proceso`
 -- Indices de la tabla `rol`
 --
 ALTER TABLE `rol`
-  ADD PRIMARY KEY (`idrol`);
+  ADD PRIMARY KEY (`idRol`);
 
 --
 -- Indices de la tabla `tipodocumental`
@@ -207,11 +207,11 @@ ALTER TABLE `tipodocumental`
   ADD PRIMARY KEY (`idTipoDocumental`);
 
 --
--- Indices de la tabla `usuario`
+-- Indices de la tabla `usuarios`
 --
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`idusuario`),
-  ADD KEY `fk_usuario_rol` (`fkIdRol`);
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -251,7 +251,7 @@ ALTER TABLE `proceso`
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `idrol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tipodocumental`
@@ -260,10 +260,10 @@ ALTER TABLE `tipodocumental`
   MODIFY `idTipoDocumental` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
-ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -280,7 +280,7 @@ ALTER TABLE `anexo`
 --
 ALTER TABLE `archivo_historial`
   ADD CONSTRAINT `fk_historial_documento` FOREIGN KEY (`fkDocumentoFormado`) REFERENCES `documento_formato` (`idDocumentoFormato`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_historial_usuario` FOREIGN KEY (`fkUsuarioAprobo`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_historial_usuario` FOREIGN KEY (`fkUsuarioAprobo`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `documento_externo`
@@ -294,12 +294,6 @@ ALTER TABLE `documento_externo`
 ALTER TABLE `documento_formato`
   ADD CONSTRAINT `fk_doc_formato_proceso` FOREIGN KEY (`fkProceso`) REFERENCES `proceso` (`idproceso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_doc_formato_tipo` FOREIGN KEY (`fkTipoDocumental`) REFERENCES `tipodocumental` (`idTipoDocumental`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `fk_usuario_rol` FOREIGN KEY (`fkIdRol`) REFERENCES `rol` (`idrol`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

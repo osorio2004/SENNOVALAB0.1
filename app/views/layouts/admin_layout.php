@@ -27,8 +27,8 @@
                         <i class="fas fa-user-circle"></i>
                     </div>
                     <div class="user-details">
-                        <span class="user-email"><?php echo isset($_SESSION['nombre']) ? htmlspecialchars($_SESSION['nombre']) : 'Usuario'; ?></span>
-                        <span class="user-role"><?php echo isset($_SESSION['rol']) ? htmlspecialchars($_SESSION['rol']) : 'Email no definido'; ?></span>
+                        <span class="user-email"><?php echo isset($_SESSION['email']) ? $_SESSION['email'] : 'Usuario'; ?></span>
+                        <span class="user-role"><?php echo isset($_SESSION['rol']) ? ucfirst(str_replace('_', ' ', $_SESSION['rol'])) : 'Rol no definido'; ?></span>
                     </div>
                 </div>
                 

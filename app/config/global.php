@@ -6,6 +6,6 @@ define("DRIVER", 'mysql');
 define("HOST", 'localhost');
 define("USERNAME_DB", 'root');
 define("PASSWORD_DB", '');
-define("DATABASE", 'gestorDocumental');
+define("DATABASE", 'gestor_documental');
 define("CHARSET", 'utf8mb4');
 define("COLLATION", 'utf8mb4_unicode_ci');

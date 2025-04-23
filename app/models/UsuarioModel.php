@@ -70,7 +70,7 @@ class UsuarioModel extends BaseModel {
         }
     }
 
-    public function validarLogin($email, $password){ // Contraseñaque llega del formulario
+    public function validarLogin($email, $password){ // Contraseña que llega del formulario
         $sql = "SELECT * FROM $this->table WHERE email=:email";
         $statement = $this->dbConnection->prepare($sql);
         $statement->bindParam(':email', $email);
