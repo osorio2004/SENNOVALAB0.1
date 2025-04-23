@@ -7,11 +7,13 @@
     width: 250px;
     background-color: #2f855a; /* Verde oscuro */
     color: white;
-    height: 165vh;
+    height: 100vh;
     transition: all 0.3s ease;
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar-content{
@@ -19,6 +21,8 @@
     flex-direction: column;
     padding: 10px;
     align-items: center;
+    height: 100%;
+    position: relative;
 }
 
 .logo{
@@ -32,9 +36,25 @@
     align-items: center;
     border-bottom: 1px solid white;
     padding-bottom: 30px;
-    img{
-        width: 100%;
-    }
+}
+
+.logo img{
+    width: 100%;
+    transition: all 0.7s ease-in-out;
+}
+
+.logo-text {
+    margin-top: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.menu {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .menu ul{
@@ -46,12 +66,100 @@
     transition: .2s all ease-in;
     padding: 1rem;
     display: flex;
+    align-items: center;
 }
 
 .menu a:hover{
     background-color: rgba(255, 255, 255, 0.15);
     color: #fff;
     border-radius: 6px;
+}
+
+/* User info styles */
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.7s ease-in-out;
+}
+
+.user-icon {
+    font-size: 2.5rem;
+    margin-right: 15px;
+    color: #fff;
+    transition: all 0.7s ease-in-out;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.user-email {
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.user-role {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+}
+
+.logout-container {
+    margin-top: auto;
+    padding: 30px 0;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Collapsed sidebar styles */
+.sidebar-hidden {
+    width: 70px !important;
+    transition: width 0.7s ease-in-out;
+}
+
+.sidebar-hidden .logo-text,
+.sidebar-hidden .span,
+.sidebar-hidden .user-details {
+    display: none !important;
+}
+
+.sidebar-hidden .logo {
+    padding-bottom: 15px;
+    border-bottom: none;
+}
+
+.sidebar-hidden .logo img {
+    width: 40px !important;
+    margin: 0 auto;
+}
+
+.sidebar-hidden .user-info {
+    padding: 10px 5px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sidebar-hidden .user-icon {
+    margin-right: 0;
+    font-size: 1.8rem;
+}
+
+.sidebar-hidden .menu a {
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.sidebar-hidden .menu a i {
+    font-size: 1.5rem;
+    margin-right: 0;
 }
 
 .main-content{
@@ -133,7 +241,7 @@ div.record-one{
 .buttons button {
     cursor: pointer;
     padding: 0.1rem .5rem;
-    background-color: #2f855a; /* Verde oscuro */
+    background-color: #2f855a;
     color: #ffffff;
     border: none;
     padding: .8em;
@@ -142,7 +250,7 @@ div.record-one{
 }
 
 .buttons button:hover {
-    background-color: #2b6e4f; /* Verde más oscuro */
+    background-color: #2b6e4f;
     transform: translateY(-2px);
 }
 
@@ -155,7 +263,7 @@ div.record-one{
 }
 
 .create button{
-    background-color: #2f855a; /* Verde oscuro */
+    background-color: #2f855a;
     border-radius: 50%;
     height: 40px;
     width: 40px;
@@ -171,13 +279,13 @@ div.record-one{
 }
 
 .create button:hover {
-    background-color: #2b6e4f; /* Verde más oscuro */
+    background-color: #2b6e4f;
     box-shadow: 0 6px 12px rgba(47, 133, 90, 0.4);
 }
 
 .form-group button{
     cursor: pointer;
-    background-color: #2f855a; /* Verde oscuro */
+    background-color: #2f855a;
     color: #fff;
     border: none;
     padding: .8em;
@@ -188,7 +296,7 @@ div.record-one{
 }
 
 .form-group button:hover {
-    background-color: #2b6e4f; /* Verde más oscuro */
+    background-color: #2b6e4f;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(47, 133, 90, 0.3);
 }
@@ -213,7 +321,7 @@ div.record-one{
 }
 
 .form-group input:focus, select:focus, textarea:focus {
-    border-color: #2f855a; /* Verde oscuro */
+    border-color: #2f855a;
     box-shadow: 0 0 0 2px rgba(47, 133, 90, 0.2);
 }
 
@@ -266,12 +374,7 @@ i.fas {
     margin-right: 10px;
     width: 20px;
     text-align: center;
-}
-
-/* Estilos para los iconos del sidebar */
-.sidebar .menu a i {
-    font-size: 18px;
-    color: #ffffff;
+    transition: all 0.7s ease-in-out;
 }
 
 /* Estilos para los iconos del header */
@@ -282,7 +385,7 @@ i.fas {
 }
 
 .header-icons .icon-link {
-    color: #2f855a; /* Verde oscuro */
+    color: #2f855a;
     font-size: 22px;
     transition: .2s all ease-in;
     margin-right: 10px;
@@ -290,9 +393,8 @@ i.fas {
 
 .header-icons .icon-link:hover {
     transform: scale(1.1);
-    color: #2b6e4f; /* Verde más oscuro */
+    color: #2b6e4f;
 }
-
 
 /* Estilos para el modo oscuro */
 body.dark-mode {
@@ -310,13 +412,12 @@ body.dark-mode .header {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-
 body.dark-mode .header-icons .icon-link {
-    color: #2f855a; /* Verde oscuro */
+    color: #2f855a;
 }
 
 body.dark-mode .header-icons .icon-link:hover {
-    color: #2b6e4f; /* Verde más oscuro */
+    color: #2b6e4f;
 }
 
 /* Modo oscuro para los contenedores de datos */
@@ -337,30 +438,30 @@ body.dark-mode div.record {
 }
 
 body.dark-mode .buttons button {
-    background-color: #2f855a; /* Verde oscuro */
+    background-color: #2f855a;
 }
 
 body.dark-mode .buttons button:hover {
-    background-color: #2b6e4f; /* Verde más oscuro */
+    background-color: #2b6e4f;
 }
 
 body.dark-mode .create button {
-    background-color: #2f855a; /* Verde oscuro */
+    background-color: #2f855a;
     box-shadow: 0 4px 8px rgba(47, 133, 90, 0.3);
 }
 
 body.dark-mode .create button:hover {
-    background-color: #2b6e4f; /* Verde más oscuro */
+    background-color: #2b6e4f;
     box-shadow: 0 6px 12px rgba(47, 133, 90, 0.4);
 }
 
 body.dark-mode .form-group button {
-    background-color: #059669; /* Verde oscuro */
+    background-color: #059669;
     box-shadow: 0 4px 8px rgba(5, 150, 105, 0.2);
 }
 
 body.dark-mode .form-group button:hover {
-    background-color: #047857; /* Verde más oscuro */
+    background-color: #047857;
     box-shadow: 0 6px 12px rgba(5, 150, 105, 0.3);
 }
 
@@ -375,7 +476,7 @@ body.dark-mode .form-group textarea {
 body.dark-mode .form-group input:focus,
 body.dark-mode .form-group select:focus,
 body.dark-mode .form-group textarea:focus {
-    border-color: #2d8a5b; /* Verde oscuro */
+    border-color: #2d8a5b;
     box-shadow: 0 0 0 2px rgba(47, 133, 90, 0.2);
 }
 
@@ -393,7 +494,7 @@ body.dark-mode .menu a:hover {
 .menu-toggle {
     cursor: pointer;
     font-size: 20px;
-    color: #2f855a; /* Verde oscuro */
+    color: #2f855a;
     background: none;
     border: none;
     display: flex;
@@ -405,30 +506,15 @@ body.dark-mode .menu a:hover {
 
 .menu-toggle:hover {
     transform: scale(1.1);
-    color: #2b6e4f; /* Verde más oscuro */
+    color: #2b6e4f;
 }
 
-/* Change menu toggle button color in dark mode */
 body.dark-mode .menu-toggle {
-    color: #2f855a; /* Verde oscuro cuando está en modo oscuro */
+    color: #2f855a;
 }
 
 body.dark-mode .menu-toggle:hover {
-    color: #2b6e4f; /* Verde más oscuro */
-}
-
-/* Add these classes to handle sidebar toggling */
-.sidebar-hidden {
-    width: 70px;
-    transition: width 0.7s ease-in-out;
-    .span, .logo-text{
-        display: none;
-        border: none;
-    }
-}
-
-.sidebar {
-    transition: width 0.7s ease-in-out;
+    color: #2b6e4f;
 }
 
 /* Estilos para la tabla tipo Excel */
@@ -496,7 +582,6 @@ body.dark-mode .excel-cell {
     flex: 1;
 }
 
-/* Ajustes para los botones de acción */
 .excel-cell .buttons {
     display: flex;
     gap: 5px;
@@ -515,13 +600,11 @@ body.dark-mode .excel-cell {
     margin: 0;
 }
 
-/* Ajustes para mejorar la visualización en la tabla */
 .info {
     padding: 0;
     max-height: 500px;
 }
 
-/* Ajustes para el tema oscuro */
 body.dark-mode .excel-table {
     border-color: #334155;
 }
@@ -546,7 +629,6 @@ body.dark-mode .excel-cell {
     transition: all 0.3s ease;
 }
 
-/* Estilos para los selects e inputs de filtro */
 .filter-container select,
 .filter-container input {
     height: 36px;
@@ -576,7 +658,6 @@ body.dark-mode .excel-cell {
     outline: none;
 }
 
-/* Estilos para el modo oscuro */
 body.dark-mode .filter-container {
     background-color: #1e1e1e;
     border-color: #2d482e;
@@ -607,7 +688,7 @@ body.dark-mode #sin-resultados {
     color: #a0aec0;
 }
 
-/* Estilos mejorados para la sección de enlaces en la página de bienvenida */
+/* Estilos mejorados para la sección de enlaces */
 .container-links {
     margin-top: 30px;
     width: 100%;
@@ -664,7 +745,7 @@ body.dark-mode #sin-resultados {
     font-size: 1.1rem;
 }
 
-/* Modificación de contenedor de datos para mejor presentación */
+/* Modificación de contenedor de datos */
 .data-container {
     border: 1px solid #e0e0e0;
     border-radius: 12px;
@@ -696,7 +777,6 @@ div.info {
     padding: 25px;
 }
 
-/* Estilos para el modo oscuro */
 body.dark-mode .container-links a {
     background-color: #2d3748;
     color: #68d391;
@@ -736,117 +816,4 @@ body.dark-mode .navegate-group h2 {
 .status-select.success {
     background-color: #e6ffe6;
     border-color: #4CAF50;
-}
-/* Estilos para la información del usuario */
-.user-info {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.user-icon {
-    font-size: 2.5rem;
-    margin-right: 15px;
-    color: #fff;
-}
-
-.user-details {
-    display: flex;
-    flex-direction: column;
-}
-
-.user-email {
-    color: #fff;
-    font-weight: 500;
-    margin-bottom: 3px;
-}
-
-.user-role {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.8rem;
-}
-.sidebar-content {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    align-items: center;
-    height: 100%; /* Asegura que ocupe todo el alto */
-    position: relative; /* Para posicionar el menú de cerrar sesión */
-}
-
-.menu {
-    flex-grow: 1; /* Hace que el menú ocupe todo el espacio disponible */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.menu ul {
-    width: 100%;
-    padding: 1rem 0;
-    flex-grow: 1; /* Hace que la lista ocupe todo el espacio */
-}
-
-/* Estilo específico para el ítem de cerrar sesión */
-.menu .logout-item {
-    margin-top: auto; /* Empuja el elemento hacia abajo */
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
-}
-.sidebar {
-    width: 250px;
-    background-color: #2f855a;
-    color: white;
-    height: 100vh; /* Cambiado de 165vh a 100vh para que ocupe solo el viewport */
-    transition: all 0.3s ease;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar-content {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    align-items: center;
-    height: 100%; /* Ocupa todo el alto disponible */
-    position: relative;
-}
-
-.menu {
-    width: 100%;
-    flex-grow: 1; /* Ocupa todo el espacio disponible */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Distribuye el espacio entre elementos */
-}
-
-.menu ul {
-    width: 100%;
-    padding: 1rem 0;
-}
-
-/* Estilo específico para el contenedor del botón de cerrar sesión */
-.logout-container {
-    margin-top: 10px; /* Empuja el contenedor hacia abajo */
-    padding: 30px 0;
-    width: 100%;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.menu a {
-    transition: .2s all ease-in;
-    padding: 1rem;
-    display: flex;
-}
-
-.menu a:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: #fff;
-    border-radius: 6px;
 }
