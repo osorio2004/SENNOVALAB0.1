@@ -32,7 +32,7 @@ class BaseModel
 
             // Verificar si hay registros
             $result = $statement->fetchAll(PDO::FETCH_OBJ);
-        
+
 
             return $result;
         } catch (PDOException $ex) {

@@ -14,11 +14,11 @@
 
 <body>
     <div class="container">
-        <div class="sidebar">
+        <aside class="sidebar">
             <div class="sidebar-content">
                 <div class="logo">
                     <img src="/img/LOGOTIPO SENNOVALAB 2024-03_blanco.png" alt="logoImg">
-                    <span class="logo-text">Gestor Documental</span>
+                    <span class="logo-text">Gestor Documentacion</span>
                 </div>
                 
                 <!-- Sección para mostrar información del usuario -->
@@ -27,7 +27,7 @@
                         <i class="fas fa-user-circle"></i>
                     </div>
                     <div class="user-details">
-                        <span class="user-email"><?php echo isset($_SESSION['nombre']) ? $_SESSION['nombre'] : 'Usuario'; ?></span>
+                        <span class="user-email"><?php echo isset($_SESSION['email']) ? $_SESSION['email'] : 'Usuario'; ?></span>
                         <span class="user-role"><?php echo isset($_SESSION['rol']) ? ucfirst(str_replace('_', ' ', $_SESSION['rol'])) : 'Rol no definido'; ?></span>
                     </div>
                 </div>
@@ -36,15 +36,15 @@
                     <ul>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'super_admin'): ?>
                             <li><a href="/usuario/view"><i class="fas fa-user-tag"></i><span class="span">Usuarios</span></a></li>
-                            <li><a href="/categoriadocumento/view"><i class="fas fa-folder"></i><span class="span">Procesos</span></a></li>
-                            <li><a href="/tipoDoc/view"><i class="fas fa-file-alt"></i><span class="span">Documentos</span></a></li>
+                            <li><a href="/documentoFormato/view"><i class="fas fa-folder"></i><span class="span">Formatos / documentos</span></a></li>
+                            <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
                         <?php endif ?>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'coordinador'): ?>
                             <li><a href="/usuario/view"><i class="fas fa-user-tag"></i><span class="span">Usuarios</span></a></li>
-                            <li><a href="/tipoDoc/view"><i class="fas fa-file-alt"></i><span class="span">Documentos</span></a></li>
+                            <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
                         <?php endif ?>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'trabajador'): ?>
-                            <li><a href="/tipoDoc/view"><i class="fas fa-file-alt"></i><span class="span">Documentos</span></a></li>
+                            <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
                         <?php endif ?>
                     </ul>
                     
@@ -59,7 +59,7 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+        </aside>
         <main class="main-content">
             <header class="header">
                 <div class="header-container">

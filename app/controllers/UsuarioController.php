@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\CentroModel;
-use App\Models\RolModel;
 use App\Models\UsuarioModel;
 
 require_once 'baseController.php';

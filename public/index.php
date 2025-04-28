@@ -8,7 +8,9 @@ require_once '../app/controllers/UsuarioController.php';
 require_once '../app/controllers/MainController.php'; 
 require_once '../app/controllers/CategoriaDocumentoController.php'; 
 require_once '../app/controllers/tipoDocController.php';
-require_once '../app/controllers/clasifiController.php';
+require_once '../app/controllers/ProcesoController.php';
+require_once '../app/controllers/DocumentoFormatoController.php';
+
 
 // Obtener la URL solicitada
 $url = $_SERVER['REQUEST_URI']; 
