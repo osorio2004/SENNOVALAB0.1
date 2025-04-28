@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-04-2025 a las 18:30:38
+-- Tiempo de generación: 28-04-2025 a las 20:41:16
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -31,29 +31,8 @@ CREATE TABLE `anexo` (
   `idAnexo` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `fecha` date NOT NULL,
-  `ruta_archivo` varchar(100) NOT NULL,
-  `fkProceso` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `archivo_historial`
---
-
-CREATE TABLE `archivo_historial` (
-  `version` int(11) NOT NULL,
-  `estado` varchar(45) NOT NULL,
-  `vigenteDesde` date NOT NULL,
-  `descripcion` varchar(255) NOT NULL,
-  `retencion` date NOT NULL,
-  `disposicionFinal` varchar(50) NOT NULL,
-  `medioAlmacenamiento` varchar(45) NOT NULL,
-  `ubicacionEnlace` varchar(50) NOT NULL,
-  `rutaArchivo` varchar(100) NOT NULL,
-  `fkDocumentoFormado` int(11) NOT NULL,
-  `fkUsuarioAprobo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `ruta_archivo` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -65,9 +44,8 @@ CREATE TABLE `documento_externo` (
   `idDocumentoExterno` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `ubicacion` varchar(50) NOT NULL,
-  `observacion` varchar(255) NOT NULL,
-  `fkProceso` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `observacion` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -83,7 +61,29 @@ CREATE TABLE `documento_formato` (
   `tipo_doc_formato` varchar(50) NOT NULL,
   `fkProceso` int(11) NOT NULL,
   `fkTipoDocumental` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `historial_archivos`
+--
+
+CREATE TABLE `historial_archivos` (
+  `idHistorial` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `estado` varchar(45) NOT NULL,
+  `vigenteDesde` date NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `retencion` date NOT NULL,
+  `disposicionFinal` varchar(50) NOT NULL,
+  `medioAlmacenamiento` varchar(45) NOT NULL,
+  `ubicacionEnlace` varchar(50) NOT NULL,
+  `rutaArchivo` varchar(45) NOT NULL,
+  `fkDocumentoFormado` int(11) DEFAULT NULL,
+  `fkUsuarioAprobo` int(11) NOT NULL,
+  `fkDocumentoExterno` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -95,7 +95,7 @@ CREATE TABLE `proceso` (
   `idproceso` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `siglaCod` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -104,10 +104,18 @@ CREATE TABLE `proceso` (
 --
 
 CREATE TABLE `rol` (
-  `idRol` int(11) NOT NULL,
-  `nombreRol` varchar(50) NOT NULL,
-  `Permisos` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `idrol` int(11) NOT NULL,
+  `nombreRol` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `rol`
+--
+
+INSERT INTO `rol` (`idrol`, `nombreRol`) VALUES
+(1, 'Super Admin'),
+(2, 'Editor'),
+(3, 'Visualizador');
 
 -- --------------------------------------------------------
 
@@ -118,7 +126,7 @@ CREATE TABLE `rol` (
 CREATE TABLE `tipodocumental` (
   `idTipoDocumental` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tipodocumental`
@@ -127,7 +135,7 @@ CREATE TABLE `tipodocumental` (
 INSERT INTO `tipodocumental` (`idTipoDocumental`, `nombre`) VALUES
 (1, 'Manual'),
 (2, 'Caracterización'),
-(3, 'Guia'),
+(3, 'Guía'),
 (4, 'Procedimiento'),
 (5, 'Instructivo');
 
@@ -140,11 +148,11 @@ INSERT INTO `tipodocumental` (`idTipoDocumental`, `nombre`) VALUES
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `apellido` varchar(50) NOT NULL,
+  `apellido` varchar(50) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `rol` enum('super_admin','coordinador','trabajador') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -152,7 +160,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `password`, `rol`) VALUES
 (1, 'Juan', '', 'juan@example.com', '$2y$10$p5MPYWBTRUBfpy2zVVBwN.akXweMdkHhV1e1QqCiKSz0zuris12g.', 'super_admin'),
-(2, 'samuel', '', 'samuel@gmail.com', '$2y$10$Gs8QPoCI43Aq9RYWDWchq.2Az7xEFuxji7PAhSVj4GaJJJPQ2T192', 'super_admin');
+(2, 'Samuel', '', 'samuel@gmail.com', '$2y$10$Gs8QPoCI43Aq9RYWDWchq.2Az7xEFuxji7PAhSVj4GaJJJPQ2T192', 'super_admin');
 
 --
 -- Índices para tablas volcadas
@@ -162,31 +170,30 @@ INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `password`, `rol`) 
 -- Indices de la tabla `anexo`
 --
 ALTER TABLE `anexo`
-  ADD PRIMARY KEY (`idAnexo`),
-  ADD KEY `fk_anexo_proceso` (`fkProceso`);
-
---
--- Indices de la tabla `archivo_historial`
---
-ALTER TABLE `archivo_historial`
-  ADD PRIMARY KEY (`version`),
-  ADD KEY `fk_historial_documento` (`fkDocumentoFormado`),
-  ADD KEY `fk_historial_usuario` (`fkUsuarioAprobo`);
+  ADD PRIMARY KEY (`idAnexo`);
 
 --
 -- Indices de la tabla `documento_externo`
 --
 ALTER TABLE `documento_externo`
-  ADD PRIMARY KEY (`idDocumentoExterno`),
-  ADD KEY `fk_doc_externo_proceso` (`fkProceso`);
+  ADD PRIMARY KEY (`idDocumentoExterno`);
 
 --
 -- Indices de la tabla `documento_formato`
 --
 ALTER TABLE `documento_formato`
   ADD PRIMARY KEY (`idDocumentoFormato`),
-  ADD KEY `fk_doc_formato_proceso` (`fkProceso`),
-  ADD KEY `fk_doc_formato_tipo` (`fkTipoDocumental`);
+  ADD KEY `fkProceso` (`fkProceso`),
+  ADD KEY `fkTipoDocumental` (`fkTipoDocumental`);
+
+--
+-- Indices de la tabla `historial_archivos`
+--
+ALTER TABLE `historial_archivos`
+  ADD PRIMARY KEY (`idHistorial`),
+  ADD KEY `fkDocumentoFormado` (`fkDocumentoFormado`),
+  ADD KEY `fkUsuarioAprobo` (`fkUsuarioAprobo`),
+  ADD KEY `fkDocumentoExterno` (`fkDocumentoExterno`);
 
 --
 -- Indices de la tabla `proceso`
@@ -198,7 +205,7 @@ ALTER TABLE `proceso`
 -- Indices de la tabla `rol`
 --
 ALTER TABLE `rol`
-  ADD PRIMARY KEY (`idRol`);
+  ADD PRIMARY KEY (`idrol`);
 
 --
 -- Indices de la tabla `tipodocumental`
@@ -224,12 +231,6 @@ ALTER TABLE `anexo`
   MODIFY `idAnexo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `archivo_historial`
---
-ALTER TABLE `archivo_historial`
-  MODIFY `version` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `documento_externo`
 --
 ALTER TABLE `documento_externo`
@@ -242,6 +243,12 @@ ALTER TABLE `documento_formato`
   MODIFY `idDocumentoFormato` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `historial_archivos`
+--
+ALTER TABLE `historial_archivos`
+  MODIFY `idHistorial` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `proceso`
 --
 ALTER TABLE `proceso`
@@ -251,7 +258,7 @@ ALTER TABLE `proceso`
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idrol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipodocumental`
@@ -270,30 +277,19 @@ ALTER TABLE `usuarios`
 --
 
 --
--- Filtros para la tabla `anexo`
---
-ALTER TABLE `anexo`
-  ADD CONSTRAINT `fk_anexo_proceso` FOREIGN KEY (`fkProceso`) REFERENCES `proceso` (`idproceso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `archivo_historial`
---
-ALTER TABLE `archivo_historial`
-  ADD CONSTRAINT `fk_historial_documento` FOREIGN KEY (`fkDocumentoFormado`) REFERENCES `documento_formato` (`idDocumentoFormato`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_historial_usuario` FOREIGN KEY (`fkUsuarioAprobo`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `documento_externo`
---
-ALTER TABLE `documento_externo`
-  ADD CONSTRAINT `fk_doc_externo_proceso` FOREIGN KEY (`fkProceso`) REFERENCES `proceso` (`idproceso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Filtros para la tabla `documento_formato`
 --
 ALTER TABLE `documento_formato`
-  ADD CONSTRAINT `fk_doc_formato_proceso` FOREIGN KEY (`fkProceso`) REFERENCES `proceso` (`idproceso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_doc_formato_tipo` FOREIGN KEY (`fkTipoDocumental`) REFERENCES `tipodocumental` (`idTipoDocumental`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `documento_formato_ibfk_1` FOREIGN KEY (`fkProceso`) REFERENCES `proceso` (`idproceso`),
+  ADD CONSTRAINT `documento_formato_ibfk_2` FOREIGN KEY (`fkTipoDocumental`) REFERENCES `tipodocumental` (`idTipoDocumental`);
+
+--
+-- Filtros para la tabla `historial_archivos`
+--
+ALTER TABLE `historial_archivos`
+  ADD CONSTRAINT `historial_archivos_ibfk_1` FOREIGN KEY (`fkDocumentoFormado`) REFERENCES `documento_formato` (`idDocumentoFormato`),
+  ADD CONSTRAINT `historial_archivos_ibfk_2` FOREIGN KEY (`fkUsuarioAprobo`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `historial_archivos_ibfk_3` FOREIGN KEY (`fkDocumentoExterno`) REFERENCES `documento_externo` (`idDocumentoExterno`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
