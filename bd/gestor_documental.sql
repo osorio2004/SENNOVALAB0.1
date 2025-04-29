@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-04-2025 a las 22:51:49
+-- Tiempo de generación: 29-04-2025 a las 14:52:56
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -34,6 +34,13 @@ CREATE TABLE `anexo` (
   `ruta_archivo` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `anexo`
+--
+
+INSERT INTO `anexo` (`idAnexo`, `nombre`, `fecha`, `ruta_archivo`) VALUES
+(1, 'Pagos', '2025-04-28', '');
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +69,13 @@ CREATE TABLE `documento_formato` (
   `fkProceso` int(11) NOT NULL,
   `fkTipoDocumental` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `documento_formato`
+--
+
+INSERT INTO `documento_formato` (`idDocumentoFormato`, `codigo`, `nombre`, `tipo`, `tipo_doc_formato`, `fkProceso`, `fkTipoDocumental`) VALUES
+(1, 'msg', 'sistemas', 'algo', 'algo', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -102,7 +116,10 @@ CREATE TABLE `proceso` (
 --
 
 INSERT INTO `proceso` (`idproceso`, `nombre`, `siglaCod`) VALUES
-(1, 'Manual del Sistema de Gestión Documental', 'SL-MSGI-001');
+(1, 'Manual del Sistema de Gestión Documental', 'SL-MSGI-001'),
+(2, 'Caracterización Proceso de Gestión de I+D+i', 'SL-C-001'),
+(3, 'Guia para gestion documental', 'SL-G-001'),
+(4, 'Guia para la gestion de riesgos en proyectos ', 'SL-G-003');
 
 -- --------------------------------------------------------
 
@@ -235,7 +252,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `anexo`
 --
 ALTER TABLE `anexo`
-  MODIFY `idAnexo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAnexo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `documento_externo`
@@ -247,7 +264,7 @@ ALTER TABLE `documento_externo`
 -- AUTO_INCREMENT de la tabla `documento_formato`
 --
 ALTER TABLE `documento_formato`
-  MODIFY `idDocumentoFormato` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idDocumentoFormato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_archivos`
@@ -259,7 +276,7 @@ ALTER TABLE `historial_archivos`
 -- AUTO_INCREMENT de la tabla `proceso`
 --
 ALTER TABLE `proceso`
-  MODIFY `idproceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idproceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
