@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #5EF975FF;
+            background-color: #CCC;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,9 +19,11 @@
         .login-container {
             display: flex;
             height: 600px;
-            width: 900px; /* Caja más ancha */
+            width: 900px;
             background-color: white;
             overflow: hidden;
+            position: relative; /* Añadido para posicionar el logo */
+            box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Sombra para mejor contraste */
         }
 
         .left-section {
@@ -29,17 +31,26 @@
             padding: 40px;
             display: flex;
             flex-direction: column;
-            background-color: white; /* Mismo color que la caja principal */
+            background-color: white;
+            z-index: 2; /* Asegura que esté sobre el logo si es necesario */
         }
 
         .logo-container {
-            margin-bottom: 30px;
+            position: absolute; /* Sacamos el logo del flujo normal */
+            top: 20px;
+            left: 20px;
+            z-index: 3; /* Asegura que esté sobre todo */
         }
 
         .logo-container img {
             max-width: 200px;
             height: auto;
             display: block;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.2)); /* Sombra para mejor visibilidad */
+        }
+
+        .form-section {
+            margin-top: 80px; /* Espacio para el logo */
         }
 
         .form-section h2 {
@@ -133,11 +144,11 @@
 </head>
 <body>
     <div class="login-container">
+        <div class="logo-container">
+            <img src="/img/LOGOTIPO SENNOVALAB 2024-03_blanco.png" alt="Logo SENA">
+        </div>
+        
         <div class="left-section">
-            <div class="logo-container">
-                <img src="/img/LOGOTIPO SENNOVALAB 2024-03_blanco.png" alt="Logo SENA">
-            </div>
-            
             <div class="form-section">  
                 <h2>Bienvenido!</h2>
                 <p>Con el gestor documental puedes organizar, acceder y compartir archivos de forma segura y eficiente.</p>
