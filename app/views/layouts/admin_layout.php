@@ -15,15 +15,7 @@
     <div class="container">
         <div class="sidebar">
             <div class="sidebar-content">
-<<<<<<< HEAD
-                <div class="logo">
-                    <img src="/img/LOGOTIPO SENNOVALAB 2024-03_blanco.png" alt="logoImg">
-                    <span class="logo-text">Gestor Documentacion</span>
-                </div>
-
-=======
                 <div class="logo"> <img id="logo" src="/img/logo_sennova_grd.png" alt="logoImg"> <span class="logo-text">Gestor Documental</span> </div>
->>>>>>> 3beac112ee427c1273375c3796b762d22259b6a1
                 <!-- Sección para mostrar información del usuario -->
                 <div class="user-info">
                     <div class="user-icon">
@@ -38,24 +30,19 @@
                 <nav class="menu">
                     <ul>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'super_admin'): ?>
-<<<<<<< HEAD
-                            <li><a href="/usuario/view"><i class="fas fa-users-cog"></i><span class="span">Usuarios</span></a></li>
-                            <li><a href="/documentoFormato/view"><i class="fas fa-file-signature"></i><span class="span">Formato</span></a></li>
-                            <li><a href="/proceso/view"><i class="fas fa-project-diagram"></i><span class="span">Proceso</span></a></li>
-                            <li><a href="/tipoDocumental/view"><i class="fas fa-file-alt"></i><span class="span">Tipo documento</span></a></li>
-                            <li><a href="/anexo/view"><i class="fas fa-file-alt"></i><span class="span">Anexo</span></a></li>
-=======
                             <li><a href="/usuario/view"><i class="fas fa-user-tag"></i><span class="span">Usuarios</span></a></li>
-                            <li><a href="/documentoFormato/view"><i class="fas fa-folder"></i><span class="span">Formatos / Documentos</span></a></li>
+                            <li><a href="/documentoFormato/view"><i class="fas fa-folder"></i><span class="span">Formato</span></a></li>
                             <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
->>>>>>> 3beac112ee427c1273375c3796b762d22259b6a1
+                            <li><a href="/tipoDocumental/view"><i class="fas fa-file-alt"></i><span class="span">Tipo Documento</span></a></li>
+                            <li><a href="/anexo/view"><i class="fas fa-file-alt"></i><span class="span">Anexo</span></a></li>
+
                         <?php endif ?>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'coordinador'): ?>
-                            <li><a href="/usuario/view"><i class="fas fa-users-cog"></i><span class="span">Usuarios</span></a></li>
-                            <li><a href="/proceso/view"><i class="fas fa-project-diagram"></i><span class="span">Proceso</span></a></li>
+                            <li><a href="/usuario/view"><i class="fas fa-user-tag"></i><span class="span">Usuarios</span></a></li>
+                            <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
                         <?php endif ?>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'trabajador'): ?>
-                            <li><a href="/proceso/view"><i class="fas fa-project-diagram"></i><span class="span">Proceso</span></a></li>
+                            <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
                         <?php endif ?>
                     </ul>
 
@@ -69,7 +56,6 @@
                         </li>
                     </ul>
                 </nav>
-
             </div>
         </div>
         <main class="main-content">
