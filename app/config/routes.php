@@ -241,6 +241,41 @@ return [
         "action" => 'remove'
     ],
 
+    // Rutas de Tipo Documental
+    "/tipoDocumental/view" => [
+        "controller" => "App\Controllers\TipoDocumentalController",
+        "action" => "view"
+    ],
+    "/tipoDocumental/new" => [
+        "controller" => "App\Controllers\TipoDocumentalController",
+        "action" => "new"
+    ],
+    "/tipoDocumental/create" => [
+        "controller" => "App\Controllers\TipoDocumentalController",
+        "action" => "create"
+    ],
+    "/tipoDocumental/edit/(\d+)" => [
+        "controller" => "App\Controllers\TipoDocumentalController",
+        "action" => "edit"
+    ],
+    "/tipoDocumental/update" => [
+        "controller" => "App\Controllers\TipoDocumentalController",
+        "action" => "update"
+    ],
+    "/tipoDocumental/delete/(\d+)" => [
+        "controller" => "App\Controllers\TipoDocumentalController",
+        "action" => "delete"
+    ],
+    "/tipoDocumental/remove" => [
+        "controller" => "App\Controllers\TipoDocumentalController",
+        "action" => "remove"
+    ],
+    "/tipoDocumental/view/(\d+)" => [
+        "controller" => "App\Controllers\TipoDocumentalController",
+        "action" => "viewOne"
+    ],
+
+
 
     // Rutas de la Página Principal
     "/main" => [

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-04-2025 a las 20:41:16
+-- Tiempo de generación: 28-04-2025 a las 22:51:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -96,6 +96,13 @@ CREATE TABLE `proceso` (
   `nombre` varchar(45) NOT NULL,
   `siglaCod` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `proceso`
+--
+
+INSERT INTO `proceso` (`idproceso`, `nombre`, `siglaCod`) VALUES
+(1, 'Manual del Sistema de Gestión Documental', 'SL-MSGI-001');
 
 -- --------------------------------------------------------
 
@@ -252,7 +259,7 @@ ALTER TABLE `historial_archivos`
 -- AUTO_INCREMENT de la tabla `proceso`
 --
 ALTER TABLE `proceso`
-  MODIFY `idproceso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idproceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
