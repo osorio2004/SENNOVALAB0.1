@@ -309,6 +309,12 @@ return [
         "action" => "viewOne"
     ],
 
+    // Rutas para el perfil
+    'usuario/viewProfile' => [
+        "controller" => "App\Controllers\usuarioController",
+        "action" => "view"
+    ],
+
 
     // Rutas de la Página Principal
     "/main" => [

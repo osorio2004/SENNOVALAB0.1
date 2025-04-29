@@ -13,21 +13,19 @@ class UsuarioModel extends BaseModel {
         parent::__construct();
     }
 
-
-
     public function saveUsuario($nombre, $email, $password, $rol) {
         try {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hash de la contraseña
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO $this->table (nombre, email, password, rol) VALUES (:nombre, :email, :password, :rol)";
             $statement = $this->dbConnection->prepare($sql);
             $statement->bindParam(':nombre', $nombre, PDO::PARAM_STR);
             $statement->bindParam(':email', $email, PDO::PARAM_STR);
-            $statement->bindParam(':password', $hashedPassword, PDO::PARAM_STR); // Guardar el hash
+            $statement->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
             $statement->bindParam(':rol', $rol, PDO::PARAM_STR);
             return $statement->execute();
         } catch (PDOException $ex) {
             echo "Error al guardar el usuario>" . $ex->getMessage();
-            return false; // Retornar false si hay un error
+            return false;
         }
     }
 
@@ -40,6 +38,19 @@ class UsuarioModel extends BaseModel {
             return $statement->fetch(PDO::FETCH_OBJ);
         } catch (PDOException $ex) {
             echo "Error al obtener el usuario>" . $ex->getMessage();
+        }
+    }
+
+    public function getProfileData($id) {
+        try {
+            $sql = "SELECT id, nombre, email, rol FROM $this->table WHERE id = :id";
+            $statement = $this->dbConnection->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            return $statement->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $ex) {
+            error_log("Error al obtener datos del perfil: " . $ex->getMessage());
+            return false;
         }
     }
 
@@ -70,7 +81,7 @@ class UsuarioModel extends BaseModel {
         }
     }
 
-    public function validarLogin($email, $password){ // Contraseña que llega del formulario
+    public function validarLogin($email, $password) {
         $sql = "SELECT * FROM $this->table WHERE email=:email";
         $statement = $this->dbConnection->prepare($sql);
         $statement->bindParam(':email', $email);
@@ -80,7 +91,7 @@ class UsuarioModel extends BaseModel {
             $resultSet [] = $row;
         }
         if(count($resultSet) > 0){
-            $hash = $resultSet[0]->password; // Hash guardado en la base de datos
+            $hash = $resultSet[0]->password;
             if(password_verify($password, $hash)){
                 $_SESSION['nombre'] = $resultSet[0]->nombre;
                 $_SESSION['id'] = $resultSet[0]->id;

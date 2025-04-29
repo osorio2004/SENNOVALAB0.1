@@ -1,204 +1,249 @@
 <?php
-// Verificación de sesión
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// views/usuario/viewProfile.php
 
-if (!isset($_SESSION['user_id'])) {
+// Verificar sesión activa
+if (!isset($_SESSION['id'])) {
     header('Location: /login');
     exit();
 }
+
+// Obtener ID del perfil (puede ser el mismo usuario u otro si es admin)
+$profileId = $_GET['id'] ?? $_SESSION['id'];
+
+// Cargar modelo y obtener datos
+require_once MAIN_APP_ROUTE . 'models/UsuarioModel.php';
+$profileData = $usuarioModel->getProfileData($profileId);
+
+if (!$profileData) {
+    echo "<div class='error-message'>Usuario no encontrado</div>";
+    exit();
+}
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
 
-        .modal-content {
-            background-color: white;
-            padding: 25px;
-            border-radius: 10px;
-            width: 400px;
-            max-width: 90%;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            position: relative;
-        }
+<div class="profile-view-container">
+    <div class="profile-header-section">
+        <h1 class="profile-title"><i class="fas fa-user-circle"></i> Perfil de Usuario</h1>
+        <div class="profile-actions">
+            <?php if ($_SESSION['id'] == $profileId || $_SESSION['rol'] == 'super_admin'): ?>
+                <a href="/usuario/edit/<?php echo $profileData->id; ?>" class="action-button edit-button">
+                    <i class="fas fa-edit"></i> Editar
+                </a>
+                <?php if ($_SESSION['rol'] == 'super_admin' && $_SESSION['id'] != $profileId): ?>
+                    <a href="/usuario/delete/<?php echo $profileData->id; ?>" class="action-button delete-button" onclick="return confirm('¿Confirmas que deseas eliminar este usuario?');">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                    </a>
+                <?php endif; ?>
+            <?php endif; ?>
+        </div>
+    </div>
 
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #777;
-        }
-
-        .profile-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .profile-photo-container {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 15px;
-        }
-
-        #profilePhoto {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #2e7d32;
-        }
-
-        .upload-btn {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: #2e7d32;
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .user-role {
-            color: #666;
-            font-style: italic;
-        }
-
-        .profile-details {
-            margin: 20px 0;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .detail-item i {
-            margin-right: 10px;
-            color: #2e7d32;
-            width: 20px;
-            text-align: center;
-        }
-
-        .profile-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 25px;
-        }
-
-        .profile-actions button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .btn-edit {
-            background-color: #2e7d32;
-            color: white;
-        }
-
-        .btn-logout {
-            background-color: #f5f5f5;
-            color: #d32f2f;
-        }
-    </style>
-</head>
-<body>
-    <div class="modal" id="profileModal" style="display: block;">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="profile-header">
-                <div class="profile-photo-container">
-                    <img id="profilePhoto" src="<?php echo isset($profileData['foto_perfil']) ? $profileData['foto_perfil'] : '/img/default-profile.png'; ?>" alt="Foto de perfil">
-                    <label for="photoUpload" class="upload-btn">
-                        <i class="fas fa-camera"></i>
-                        <input type="file" id="photoUpload" accept="image/*" style="display: none;">
-                    </label>
-                </div>
-                <h2><?php echo htmlspecialchars($profileData['nombre'] ?? 'Usuario'); ?></h2>
-                <p class="user-role"><?php echo htmlspecialchars($profileData['rol'] ?? 'Rol no definido'); ?></p>
+    <div class="profile-detail-card">
+        <div class="user-avatar-section">
+            <div class="avatar-container">
+                <i class="fas fa-user-circle"></i>
             </div>
-            <div class="profile-details">
-                <div class="detail-item">
-                    <i class="fas fa-envelope"></i>
-                    <span><?php echo htmlspecialchars($profileData['email'] ?? 'No especificado'); ?></span>
-                </div>
+            <h2 class="user-name"><?php echo htmlspecialchars($profileData->nombre); ?></h2>
+            <span class="user-role-badge"><?php echo ucfirst(str_replace('_', ' ', $profileData->rol)); ?></span>
+        </div>
+
+        <div class="user-info-section">
+            <div class="info-row">
+                <span class="info-label"><i class="fas fa-id-card"></i> ID:</span>
+                <span class="info-value"><?php echo $profileData->id; ?></span>
             </div>
-            <div class="profile-actions">
-                <button class="btn-edit">Editar Perfil</button>
-                <button class="btn-logout" onclick="window.location.href='/login/logout'">Cerrar Sesión</button>
+            <div class="info-row">
+                <span class="info-label"><i class="fas fa-envelope"></i> Email:</span>
+                <span class="info-value"><?php echo htmlspecialchars($profileData->email); ?></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label"><i class="fas fa-user-tag"></i> Rol:</span>
+                <span class="info-value"><?php echo ucfirst(str_replace('_', ' ', $profileData->rol)); ?></span>
             </div>
         </div>
     </div>
 
-    <script>
-        // Cerrar modal
-        document.querySelector('.close-modal').addEventListener('click', function() {
-            document.getElementById('profileModal').style.display = 'none';
-            window.location.href = '/'; // Redirigir a la página principal
-        });
+    <?php if ($_SESSION['id'] == $profileId): ?>
+    <div class="profile-security-section">
+        <h3><i class="fas fa-shield-alt"></i> Seguridad</h3>
+        <a href="/usuario/changePassword/<?php echo $profileData->id; ?>" class="security-button">
+            <i class="fas fa-key"></i> Cambiar Contraseña
+        </a>
+    </div>
+    <?php endif; ?>
+</div>
 
-        // Cerrar modal al hacer clic fuera del contenido
-        window.addEventListener('click', function(e) {
-            if (e.target === document.getElementById('profileModal')) {
-                document.getElementById('profileModal').style.display = 'none';
-                window.location.href = '/'; // Redirigir a la página principal
-            }
-        });
+<style>
+.profile-view-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-        // Subir foto de perfil
-        document.getElementById('photoUpload').addEventListener('change', function() {
-            if (this.files && this.files[0]) {
-                const formData = new FormData();
-                formData.append('profile_photo', this.files[0]);
+.profile-header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+}
 
-                fetch('/profile/updatePhoto', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        document.getElementById('profilePhoto').src = data.photoPath;
-                        alert('Foto de perfil actualizada correctamente');
-                    } else {
-                        alert('Error: ' + data.error);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Ocurrió un error al subir la imagen');
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+.profile-title {
+    color: #333;
+    font-size: 24px;
+    margin: 0;
+}
+
+.profile-title i {
+    margin-right: 10px;
+    color: #4e73df;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-button {
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.edit-button {
+    background-color: #4e73df;
+    color: white;
+    border: 1px solid #4e73df;
+}
+
+.edit-button:hover {
+    background-color: #3a5ccc;
+}
+
+.delete-button {
+    background-color: #e74a3b;
+    color: white;
+    border: 1px solid #e74a3b;
+}
+
+.delete-button:hover {
+    background-color: #d62c1a;
+}
+
+.profile-detail-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    display: flex;
+    gap: 30px;
+}
+
+.user-avatar-section {
+    text-align: center;
+    flex: 0 0 200px;
+}
+
+.avatar-container {
+    font-size: 100px;
+    color: #dddfeb;
+    margin-bottom: 15px;
+}
+
+.user-name {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.user-role-badge {
+    display: inline-block;
+    background-color: #f8f9fa;
+    color: #4e73df;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #dddfeb;
+}
+
+.user-info-section {
+    flex: 1;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.info-label {
+    width: 150px;
+    font-weight: 600;
+    color: #5a5c69;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-value {
+    flex: 1;
+    color: #333;
+}
+
+.profile-security-section {
+    margin-top: 30px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.profile-security-section h3 {
+    margin-top: 0;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.security-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    background-color: #f8f9fa;
+    color: #4e73df;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid #dddfeb;
+    transition: all 0.3s;
+}
+
+.security-button:hover {
+    background-color: #e9ecef;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #f5c6cb;
+    text-align: center;
+    margin: 20px;
+}
+</style>
