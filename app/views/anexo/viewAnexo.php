@@ -1,4 +1,5 @@
-<div class="container">
+<link rel="stylesheet" href="/css/anexo.css">
+<div class="data-container">
     <h1>Listado de Anexos</h1>
 
     <a href="/anexo/new" class="btn btn-primary mb-3">+</a>

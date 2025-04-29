@@ -1,4 +1,6 @@
-<div class="container">
+<link rel="stylesheet" href="/css/anexo.css">
+
+<div class="data-container">
     <h1>Nuevo Anexo</h1>
 
     <form action="/anexo/create" method="POST" enctype="multipart/form-data">

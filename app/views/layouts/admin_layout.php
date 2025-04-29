@@ -30,31 +30,32 @@
                 <nav class="menu">
                     <ul>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'super_admin'): ?>
-                            <li><a href="/usuario/view"><i class="fas fa-user-tag"></i><span class="span">Usuarios</span></a></li>
-                            <li><a href="/documentoFormato/view"><i class="fas fa-folder"></i><span class="span">Formato</span></a></li>
-                            <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
-                            <li><a href="/tipoDocumental/view"><i class="fas fa-file-alt"></i><span class="span">Tipo Documento</span></a></li>
-                            <li><a href="/anexo/view"><i class="fas fa-file-alt"></i><span class="span">Anexo</span></a></li>
-
+                            <li><a href="/usuario/view"><i class="fas fa-users-cog"></i><span class="span">Usuarios</span></a></li> <!-- usuarios admin -->
+                            <li><a href="/documentoFormato/view"><i class="fas fa-file-contract"></i><span class="span">Formato</span></a></li> <!-- plantilla o formato -->
+                            <li><a href="/proceso/view"><i class="fas fa-project-diagram"></i><span class="span">Proceso</span></a></li> <!-- proceso -->
+                            <li><a href="/tipoDocumental/view"><i class="fas fa-file-alt"></i><span class="span">Tipo Documento</span></a></li> <!-- tipo documento -->
+                            <li><a href="/anexo/view"><i class="fas fa-paperclip"></i><span class="span">Anexo</span></a></li> <!-- anexo -->
                         <?php endif ?>
+
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'coordinador'): ?>
-                            <li><a href="/usuario/view"><i class="fas fa-user-tag"></i><span class="span">Usuarios</span></a></li>
-                            <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
+                            <li><a href="/usuario/view"><i class="fas fa-user-cog"></i><span class="span">Usuarios</span></a></li>
+                            <li><a href="/proceso/view"><i class="fas fa-project-diagram"></i><span class="span">Proceso</span></a></li>
                         <?php endif ?>
-                        <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'trabajador'): ?>
-                            <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
-                        <?php endif ?>
-                    </ul>
 
-                    <!-- Item de cerrar sesión separado -->
-                    <ul>
-                        <li class="logout-item">
-                            <a href="/login/logout">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span class="span">Cerrar Sesión</span>
-                            </a>
-                        </li>
-                    </ul>
+                        <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'trabajador'): ?>
+                            <li><a href="/proceso/view"><i class="fas fa-tasks"></i><span class="span">Proceso</span></a></li>
+                        <?php endif ?>
+                        </ul>
+
+                        <!-- Item de cerrar sesión separado -->
+                        <ul>
+                            <li class="logout-item">
+                                <a href="/login/logout">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span class="span">Cerrar Sesión</span>
+                                </a>
+                            </li>
+                        </ul>
                 </nav>
             </div>
         </div>
@@ -119,7 +120,7 @@
                 setTimeout(() => {
                     logo.src = '/img/logo_sennova_peque.png';
                     logo.style.opacity = 1;
-                },580);
+                }, 580);
             } else {
                 logo.style.opacity = 0;
                 setTimeout(() => {

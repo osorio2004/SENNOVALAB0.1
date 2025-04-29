@@ -1,4 +1,6 @@
-<div class="container">
+<link rel="stylesheet" href="/css/anexo.css">
+
+<div class="data-container">
     <h1>Eliminar Anexo</h1>
 
     <div class="alert alert-danger">

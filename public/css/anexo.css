@@ -1,0 +1,93 @@
+/* /css/anexo.css */
+
+/* Estilo principal del contenedor */
+.data-container {
+    margin: 40px auto;
+    max-width: 1000px;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.data-container h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #343a40;
+}
+
+/* Botón + */
+.data-container .btn.btn-primary {
+    font-size: 26px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 46px;
+    background-color: #28a745;
+    border: none;
+}
+
+.data-container .btn.btn-primary:hover {
+    background-color: #218838;
+}
+
+/* Tabla */
+.table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.table th,
+.table td {
+    text-align: center;
+    vertical-align: middle !important;
+    padding: 12px;
+}
+
+/* Enlace al archivo */
+a[target="_blank"] {
+    color: #17a2b8;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a[target="_blank"]:hover {
+    text-decoration: underline;
+}
+
+/* Botones de acción */
+.btn-sm {
+    padding: 6px 10px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border: none;
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
