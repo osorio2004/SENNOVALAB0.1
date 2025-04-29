@@ -20,7 +20,7 @@
                     <img src="/img/LOGOTIPO SENNOVALAB 2024-03_blanco.png" alt="logoImg">
                     <span class="logo-text">Gestor Documentacion</span>
                 </div>
-                
+
                 <!-- Sección para mostrar información del usuario -->
                 <div class="user-info">
                     <div class="user-icon">
@@ -31,7 +31,7 @@
                         <span class="user-role"><?php echo isset($_SESSION['rol']) ? ucfirst(str_replace('_', ' ', $_SESSION['rol'])) : 'Rol no definido'; ?></span>
                     </div>
                 </div>
-                
+
                 <nav class="menu">
                     <ul>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'super_admin'): ?>
@@ -48,7 +48,7 @@
                             <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
                         <?php endif ?>
                     </ul>
-                    
+
                     <!-- Item de cerrar sesión separado -->
                     <ul>
                         <li class="logout-item">
@@ -81,21 +81,34 @@
 
     <!-- Script para cambiar entre tema oscuro y claro -->
     <script>
+        // Comprobar la preferencia de modo oscuro al cargar la página
+        window.onload = function() {
+            const darkMode = localStorage.getItem('darkMode');
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                const icon = document.getElementById('theme-toggle').querySelector('i');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        };
+
         // Cambiar el tema de la página al hacer clic en el icono de la luna o el sol
         document.getElementById('theme-toggle').addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
             const icon = this.querySelector('i');
-            if (icon.classList.contains('fa-moon')) {
+
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled'); // Guardar preferencia
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
             } else {
+                localStorage.setItem('darkMode', 'disabled'); // Guardar preferencia
                 icon.classList.remove('fa-sun');
                 icon.classList.add('fa-moon');
             }
         });
 
         // Cambiar el logo al hacer clic en el botón de menú
-        // y ocultar/mostrar la barra lateral
         const menuToggle = document.querySelector('.menu-toggle');
         const sidebar = document.querySelector('.sidebar');
         const logo = document.getElementById('logo');
@@ -108,7 +121,7 @@
                 setTimeout(() => {
                     logo.src = '/img/logo_sennova_peque.png';
                     logo.style.opacity = 1;
-                },580);
+                }, 580);
             } else {
                 logo.style.opacity = 0;
                 setTimeout(() => {

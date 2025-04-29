@@ -4,13 +4,11 @@
 }
 
 .sidebar{
-    width: 250px;
+    width: 270px;
     background-color: #2f855a; /* Verde oscuro */
     color: white;
     height: 100vh;
     transition: all 0.3s ease;
-overflow-y: auto;
-    overflow-x: hidden;
     scrollbar-width: none;
     display: flex;
     flex-direction: column;
