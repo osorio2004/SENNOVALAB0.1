@@ -7,27 +7,22 @@
     <title><?php echo isset($title) ? $title : 'Default Title'; ?></title>
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/style_admin_layout.css">
-    <link rel="shortcut icon" href="/img/logo-sena.png" type="image/x-icon">
-    <!-- Añadiendo Font Awesome para los iconos -->
+    <link rel="shortcut icon" href="/img/logo-sena.png" type="image/x-icon"> <!-- Añadiendo Font Awesome para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
     <div class="container">
-        <aside class="sidebar">
+        <div class="sidebar">
             <div class="sidebar-content">
-                <div class="logo">
-                    <img src="/img/LOGOTIPO SENNOVALAB 2024-03_blanco.png" alt="logoImg">
-                    <span class="logo-text">Gestor Documentacion</span>
-                </div>
-
+                <div class="logo"> <img id="logo" src="/img/logo_sennova_grd.png" alt="logoImg"> <span class="logo-text">Gestor Documental</span> </div>
                 <!-- Sección para mostrar información del usuario -->
                 <div class="user-info">
                     <div class="user-icon">
                         <i class="fas fa-user-circle"></i>
                     </div>
                     <div class="user-details">
-                        <span class="user-email"><?php echo isset($_SESSION['email']) ? $_SESSION['email'] : 'Usuario'; ?></span>
+                        <span class="user-nombre"><?php echo isset($_SESSION['nombre']) ? $_SESSION['nombre'] : 'Usuario'; ?></span>
                         <span class="user-role"><?php echo isset($_SESSION['rol']) ? ucfirst(str_replace('_', ' ', $_SESSION['rol'])) : 'Rol no definido'; ?></span>
                     </div>
                 </div>
@@ -36,9 +31,8 @@
                     <ul>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'super_admin'): ?>
                             <li><a href="/usuario/view"><i class="fas fa-user-tag"></i><span class="span">Usuarios</span></a></li>
-                            <li><a href="/documentoFormato/view"><i class="fas fa-folder"></i><span class="span">Formato</span></a></li>
+                            <li><a href="/documentoFormato/view"><i class="fas fa-folder"></i><span class="span">Formatos / Documentos</span></a></li>
                             <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
-                            <li><a href="/tipoDocumental/view"><i class="fas fa-file-alt"></i><span class="span">Tipo documento</span></a></li>
                         <?php endif ?>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'coordinador'): ?>
                             <li><a href="/usuario/view"><i class="fas fa-user-tag"></i><span class="span">Usuarios</span></a></li>
@@ -60,7 +54,7 @@
                     </ul>
                 </nav>
             </div>
-        </aside>
+        </div>
         <main class="main-content">
             <header class="header">
                 <div class="header-container">
@@ -109,6 +103,7 @@
         });
 
         // Cambiar el logo al hacer clic en el botón de menú
+        // y ocultar/mostrar la barra lateral
         const menuToggle = document.querySelector('.menu-toggle');
         const sidebar = document.querySelector('.sidebar');
         const logo = document.getElementById('logo');
@@ -121,7 +116,7 @@
                 setTimeout(() => {
                     logo.src = '/img/logo_sennova_peque.png';
                     logo.style.opacity = 1;
-                }, 580);
+                },580);
             } else {
                 logo.style.opacity = 0;
                 setTimeout(() => {
@@ -130,6 +125,7 @@
                 });
             }
         });
+    </script>
     </script>
 </body>
 
