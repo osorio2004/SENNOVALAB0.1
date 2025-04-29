@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-04-2025 a las 14:52:56
+-- Tiempo de generación: 29-04-2025 a las 15:37:05
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -173,6 +173,8 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) DEFAULT NULL,
+  `cedula` varchar(15) NOT NULL,
+  `centro` varchar(100) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `rol` enum('super_admin','coordinador','trabajador') NOT NULL
@@ -182,9 +184,9 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `password`, `rol`) VALUES
-(1, 'Juan', '', 'juan@example.com', '$2y$10$p5MPYWBTRUBfpy2zVVBwN.akXweMdkHhV1e1QqCiKSz0zuris12g.', 'super_admin'),
-(2, 'Samuel', '', 'samuel@gmail.com', '$2y$10$Gs8QPoCI43Aq9RYWDWchq.2Az7xEFuxji7PAhSVj4GaJJJPQ2T192', 'super_admin');
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `cedula`, `centro`, `email`, `password`, `rol`) VALUES
+(1, 'Juan Andres', 'Osorio', '1054856962', 'Centro de Procesos Industriales y Construcción', 'juan@example.com', '$2y$10$p5MPYWBTRUBfpy2zVVBwN.akXweMdkHhV1e1QqCiKSz0zuris12g.', 'super_admin'),
+(2, 'Samuel', 'Castaño', '1056124083', 'Centro de Procesos Industriales y Construcción', 'samuel@gmail.com', '$2y$10$Gs8QPoCI43Aq9RYWDWchq.2Az7xEFuxji7PAhSVj4GaJJJPQ2T192', 'super_admin');
 
 --
 -- Índices para tablas volcadas
