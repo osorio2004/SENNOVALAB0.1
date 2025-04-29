@@ -78,43 +78,56 @@
         </main>
     </div>
     <script>
-        // Cambiar el tema de la página al hacer clic en el icono de la luna o el sol
-        document.getElementById('theme-toggle').addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-            const icon = this.querySelector('i');
-            if (icon.classList.contains('fa-moon')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        });
+    // Comprobar la preferencia de modo oscuro al cargar la página
+    window.onload = function() {
+        const darkMode = localStorage.getItem('darkMode');
+        if (darkMode === 'enabled') {
+            document.body.classList.add('dark-mode');
+            const icon = document.getElementById('theme-toggle').querySelector('i');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+    };
 
-        // Cambiar el logo al hacer clic en el botón de menú
-        // y ocultar/mostrar la barra lateral
-        const menuToggle = document.querySelector('.menu-toggle');
-        const sidebar = document.querySelector('.sidebar');
-        const logo = document.getElementById('logo');
+    // Cambiar el tema de la página al hacer clic en el icono de la luna o el sol
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        const icon = this.querySelector('i');
+        
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled'); // Guardar preferencia
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            localStorage.setItem('darkMode', 'disabled'); // Guardar preferencia
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    });
 
-        menuToggle.addEventListener('click', function() {
-            sidebar.classList.toggle('sidebar-hidden');
+    // Cambiar el logo al hacer clic en el botón de menú
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const logo = document.getElementById('logo');
 
-            if (sidebar.classList.contains('sidebar-hidden')) {
-                logo.style.opacity = 0;
-                setTimeout(() => {
-                    logo.src = '/img/logo_sennova_peque.png';
-                    logo.style.opacity = 1;
-                },580);
-            } else {
-                logo.style.opacity = 0;
-                setTimeout(() => {
-                    logo.src = '/img/logo_sennova_grd.png';
-                    logo.style.opacity = 1;
-                });
-            }
-        });
-    </script>
+    menuToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('sidebar-hidden');
+
+        if (sidebar.classList.contains('sidebar-hidden')) {
+            logo.style.opacity = 0;
+            setTimeout(() => {
+                logo.src = '/img/logo_sennova_peque.png';
+                logo.style.opacity = 1;
+            }, 580);
+        } else {
+            logo.style.opacity = 0;
+            setTimeout(() => {
+                logo.src = '/img/logo_sennova_grd.png';
+                logo.style.opacity = 1;
+            });
+        }
+    });
+</script>
 </body>
 
 </html>

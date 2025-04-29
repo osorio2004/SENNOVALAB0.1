@@ -5,11 +5,10 @@
 
 .sidebar{
     width: 270px;
-    background-color: #2f855a; /* Verde oscuro */
+    background-color: #2f855a;
     color: white;
     height: 100%;
     transition: all 0.3s ease;
-    scrollbar-width: none;
     display: flex;
     flex-direction: column;
 }
@@ -818,4 +817,86 @@ body.dark-mode .navegate-group h2 {
 .status-select.success {
     background-color: #e6ffe6;
     border-color: #4CAF50;
+}
+.torta-container {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    aspect-ratio: 600 / 331;
+}
+
+.torta-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.torta-btn {
+    position: absolute;
+    display: block;
+    z-index: 2;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Ajustado según el nuevo tamaño */
+.btn2 {
+    top: 56%;
+    left: 3%;
+    width: 18%;
+    height: 22%;
+}
+
+.btn1 {
+    top: 15%;
+    left: 16%;
+    width: 18%;
+    height: 22%;
+}
+
+.btn3 {
+    top: 6%;
+    left: 42%;
+    width: 14%;
+    height: 10%;
+}
+
+.btn4 {
+    top: 24%;
+    left: 68%;
+    width: 12%;
+    height: 8%;
+}
+
+.btn5 {
+    top: 62%;
+    left: 80%;
+    width: 16%;
+    height: 10%;
+}
+
+.torta-btn:hover {
+    transform: scale(1.05);
+}
+
+.torta-btn::after {
+    content: attr(title);
+    position: absolute;
+    left: -9999px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.torta-container {
+    background-color: #294637FF;
+    width: 641px;
+    height: 256px;
+    border-radius: 10px;
 }
