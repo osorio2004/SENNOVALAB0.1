@@ -4,13 +4,11 @@
 }
 
 .sidebar{
-    width: 250px;
+    width: 270px;
     background-color: #2f855a; /* Verde oscuro */
     color: white;
-    height: 100vh;
+    height: 100%;
     transition: all 0.3s ease;
-    overflow-y: auto;
-    overflow-x: hidden;
     scrollbar-width: none;
     display: flex;
     flex-direction: column;
@@ -27,7 +25,7 @@
 
 .logo{
     width: 100%;
-    margin: 1rem 0;
+    margin: 0 0;
     font-size: 1.8rem;
     font-weight: 700;
     display: flex;
@@ -41,6 +39,10 @@
 .logo img{
     width: 100%;
     transition: all 0.7s ease-in-out;
+}
+
+#logo {
+    transition: opacity 0.5s ease;
 }
 
 .logo-text {
@@ -80,7 +82,7 @@
     display: flex;
     align-items: center;
     padding: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.7s ease-in-out;
@@ -102,7 +104,7 @@
 .user-email {
     color: #fff;
     font-weight: 500;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
 .user-role {

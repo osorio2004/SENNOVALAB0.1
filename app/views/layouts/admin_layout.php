@@ -14,29 +14,29 @@
 
 <body>
     <div class="container">
-        <aside class="sidebar">
+        <div class="sidebar">
             <div class="sidebar-content">
                 <div class="logo">
-                    <img src="/img/LOGOTIPO SENNOVALAB 2024-03_blanco.png" alt="logoImg">
-                    <span class="logo-text">Gestor Documentacion</span>
+                    <img id="logo" src="/img/logo_sennova_grd.png" alt="logoImg">
+                    <span class="logo-text">Gestor Documental</span>
                 </div>
-                
+
                 <!-- Sección para mostrar información del usuario -->
                 <div class="user-info">
                     <div class="user-icon">
                         <i class="fas fa-user-circle"></i>
                     </div>
                     <div class="user-details">
-                        <span class="user-email"><?php echo isset($_SESSION['email']) ? $_SESSION['email'] : 'Usuario'; ?></span>
+                        <span class="user-nombre"><?php echo isset($_SESSION['nombre']) ? $_SESSION['nombre'] : 'Usuario'; ?></span>
                         <span class="user-role"><?php echo isset($_SESSION['rol']) ? ucfirst(str_replace('_', ' ', $_SESSION['rol'])) : 'Rol no definido'; ?></span>
                     </div>
                 </div>
-                
+
                 <nav class="menu">
                     <ul>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'super_admin'): ?>
                             <li><a href="/usuario/view"><i class="fas fa-user-tag"></i><span class="span">Usuarios</span></a></li>
-                            <li><a href="/documentoFormato/view"><i class="fas fa-folder"></i><span class="span">Formatos / documentos</span></a></li>
+                            <li><a href="/documentoFormato/view"><i class="fas fa-folder"></i><span class="span">Formatos / Documentos</span></a></li>
                             <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
                         <?php endif ?>
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'coordinador'): ?>
@@ -47,7 +47,7 @@
                             <li><a href="/proceso/view"><i class="fas fa-file-alt"></i><span class="span">Proceso</span></a></li>
                         <?php endif ?>
                     </ul>
-                    
+
                     <!-- Item de cerrar sesión separado -->
                     <ul>
                         <li class="logout-item">
@@ -59,7 +59,7 @@
                     </ul>
                 </nav>
             </div>
-        </aside>
+        </div>
         <main class="main-content">
             <header class="header">
                 <div class="header-container">
@@ -77,9 +77,8 @@
             </div>
         </main>
     </div>
-
-    <!-- Script para cambiar entre tema oscuro y claro -->
     <script>
+        // Cambiar el tema de la página al hacer clic en el icono de la luna o el sol
         document.getElementById('theme-toggle').addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
             const icon = this.querySelector('i');
@@ -91,11 +90,29 @@
                 icon.classList.add('fa-moon');
             }
         });
+
+        // Cambiar el logo al hacer clic en el botón de menú
+        // y ocultar/mostrar la barra lateral
         const menuToggle = document.querySelector('.menu-toggle');
         const sidebar = document.querySelector('.sidebar');
+        const logo = document.getElementById('logo');
 
         menuToggle.addEventListener('click', function() {
             sidebar.classList.toggle('sidebar-hidden');
+
+            if (sidebar.classList.contains('sidebar-hidden')) {
+                logo.style.opacity = 0;
+                setTimeout(() => {
+                    logo.src = '/img/logo_sennova_peque.png';
+                    logo.style.opacity = 1;
+                },580);
+            } else {
+                logo.style.opacity = 0;
+                setTimeout(() => {
+                    logo.src = '/img/logo_sennova_grd.png';
+                    logo.style.opacity = 1;
+                });
+            }
         });
     </script>
 </body>
