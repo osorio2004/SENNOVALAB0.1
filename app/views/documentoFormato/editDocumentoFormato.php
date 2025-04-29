@@ -30,9 +30,7 @@
                 <label for="">Proceso:</label>
                 <select name="txtFkProceso" id="txtFkProceso" class="form-control" required>
                     <?php foreach($procesos as $proceso): ?>
-                        <option value="<?php echo $proceso->idProceso ?>" <?php echo $proceso->idProceso == $documentoFormato->fkProceso ? 'selected' : ''; ?>>
-                            <?php echo $proceso->nombre ?>
-                        </option>
+                        <option value="<?php echo $proceso->idproceso; ?>"><?php echo $proceso->nombre; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

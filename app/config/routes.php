@@ -275,6 +275,39 @@ return [
         "action" => "viewOne"
     ],
 
+    // Rutas de Anexo
+    '/anexo/view' => [
+        "controller" => "App\Controllers\AnexoController",
+        "action" => "view"
+    ],
+    '/anexo/new' => [
+        "controller" => "App\Controllers\AnexoController",
+        "action" => "new"
+    ],
+    '/anexo/create' => [
+        "controller" => "App\Controllers\AnexoController",
+        "action" => "create"
+    ],
+    '/anexo/edit/(\d+)' => [
+        "controller" => "App\Controllers\AnexoController",
+        "action" => "edit"
+    ],
+    '/anexo/update' => [
+        "controller" => "App\Controllers\AnexoController",
+        "action" => "update"
+    ],
+    '/anexo/delete/(\d+)' => [
+        "controller" => "App\Controllers\AnexoController",
+        "action" => "delete"
+    ],
+    '/anexo/remove' => [
+        "controller" => "App\Controllers\AnexoController",
+        "action" => "remove"
+    ],
+    '/anexo/view/(\d+)' => [
+        "controller" => "App\Controllers\AnexoController",
+        "action" => "viewOne"
+    ],
 
 
     // Rutas de la Página Principal

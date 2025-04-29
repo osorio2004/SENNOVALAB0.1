@@ -11,6 +11,7 @@ require_once '../app/controllers/tipoDocController.php';
 require_once '../app/controllers/ProcesoController.php';
 require_once '../app/controllers/DocumentoFormatoController.php';
 require_once '../app/controllers/TipoDocumentalController.php';
+require_once '../app/controllers/AnexoController.php';
 
 
 // Obtener la URL solicitada
