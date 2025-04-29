@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #CCC;
+            background-color: #ccc;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,8 +22,6 @@
             width: 900px;
             background-color: white;
             overflow: hidden;
-            position: relative; /* Añadido para posicionar el logo */
-            box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Sombra para mejor contraste */
         }
 
         .left-section {
@@ -32,30 +30,33 @@
             display: flex;
             flex-direction: column;
             background-color: white;
-            z-index: 2; /* Asegura que esté sobre el logo si es necesario */
+            justify-content: center; /* Centra verticalmente el contenido */
         }
 
         .logo-container {
-            position: absolute; /* Sacamos el logo del flujo normal */
-            top: 20px;
-            left: 20px;
-            z-index: 3; /* Asegura que esté sobre todo */
+            margin: 0 auto 5px auto; /* Reducido el margen inferior */
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            border: none;
+            box-shadow: none;
         }
 
         .logo-container img {
-            max-width: 200px;
+            width: 200px;
             height: auto;
-            display: block;
-            filter: drop-shadow(0 0 5px rgba(0,0,0,0.2)); /* Sombra para mejor visibilidad */
+            max-width: none;
         }
 
         .form-section {
-            margin-top: 80px; /* Espacio para el logo */
+            margin-top: 0; /* Eliminamos margen superior */
         }
 
         .form-section h2 {
             color: #2e7d32;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Reducido el margen inferior */
             font-size: 28px;
             text-align: left;
         }
@@ -144,11 +145,11 @@
 </head>
 <body>
     <div class="login-container">
-        <div class="logo-container">
-            <img src="/img/LOGOTIPO SENNOVALAB 2024-03_blanco.png" alt="Logo SENA">
-        </div>
-        
         <div class="left-section">
+            <div class="logo-container">
+                <img src="/img/LOGOTIPO SENNOVALAB 2024-03_blanco.png" alt="Logo SENA">
+            </div>
+            
             <div class="form-section">  
                 <h2>Bienvenido!</h2>
                 <p>Con el gestor documental puedes organizar, acceder y compartir archivos de forma segura y eficiente.</p>
