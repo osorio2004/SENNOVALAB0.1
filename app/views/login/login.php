@@ -1,7 +1,7 @@
 <div class="login-container">
     <div class="left-section">
         <div class="logo-container">
-            <img src="/img/logo_sennova_grd.png" alt="Logo SENA">
+            <img src="/img/LOGOTIPO SENNOVALAB 2024-03_blanco.png" alt="Logo SENA">
         </div>
     </div>
 

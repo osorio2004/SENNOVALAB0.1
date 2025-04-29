@@ -6,13 +6,18 @@
     </div>
     <div class="info">
         <?php
-            if($formato && is_object($formato)){
+            if($documentoFormato && is_object($documentoFormato)){
                 echo "
                     <div class='record-one'>
-                        <span>ID: $formato->id</span>
-                        <span>Nombre: $formato->nombre</span>
+                        <span>ID: $documentoFormato->idDocumentoFormato</span>
+                        <span>Código: $documentoFormato->codigo</span>
+                        <span>Nombre: $documentoFormato->nombre</span>
+                        <span>Tipo: $documentoFormato->tipo</span>
+                        <span>Tipo Documento Formato: $documentoFormato->tipo_doc_formato</span>
+                        <span>Proceso ID: $documentoFormato->fkProceso</span>
+                        <span>Tipo Documental ID: $documentoFormato->fkTipoDocumental</span>
                     </div>
-                ";      
+                ";
             }
         ?>
     </div>
