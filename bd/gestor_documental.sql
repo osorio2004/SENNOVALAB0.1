@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-04-2025 a las 15:37:05
+-- Tiempo de generación: 06-05-2025 a las 06:34:00
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -29,17 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `anexo` (
   `idAnexo` int(11) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
   `fecha` date NOT NULL,
-  `ruta_archivo` varchar(45) NOT NULL
+  `ruta_archivo` varchar(255) NOT NULL,
+  `proceso_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `anexo`
 --
 
-INSERT INTO `anexo` (`idAnexo`, `nombre`, `fecha`, `ruta_archivo`) VALUES
-(1, 'Pagos', '2025-04-28', '');
+INSERT INTO `anexo` (`idAnexo`, `nombre`, `fecha`, `ruta_archivo`, `proceso_id`) VALUES
+(1, 'Pagos', '2025-04-28', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,7 @@ CREATE TABLE `historial_archivos` (
   `medioAlmacenamiento` varchar(45) NOT NULL,
   `ubicacionEnlace` varchar(50) NOT NULL,
   `rutaArchivo` varchar(45) NOT NULL,
-  `fkDocumentoFormado` int(11) DEFAULT NULL,
+  `fkDocumentoFormato` int(11) DEFAULT NULL,
   `fkUsuarioAprobo` int(11) NOT NULL,
   `fkDocumentoExterno` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -196,7 +197,8 @@ INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `cedula`, `centro`, `email`,
 -- Indices de la tabla `anexo`
 --
 ALTER TABLE `anexo`
-  ADD PRIMARY KEY (`idAnexo`);
+  ADD PRIMARY KEY (`idAnexo`),
+  ADD KEY `proceso_id` (`proceso_id`);
 
 --
 -- Indices de la tabla `documento_externo`
@@ -217,7 +219,7 @@ ALTER TABLE `documento_formato`
 --
 ALTER TABLE `historial_archivos`
   ADD PRIMARY KEY (`idHistorial`),
-  ADD KEY `fkDocumentoFormado` (`fkDocumentoFormado`),
+  ADD KEY `fkDocumentoFormato` (`fkDocumentoFormato`),
   ADD KEY `fkUsuarioAprobo` (`fkUsuarioAprobo`),
   ADD KEY `fkDocumentoExterno` (`fkDocumentoExterno`);
 
@@ -303,6 +305,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- Filtros para la tabla `anexo`
+--
+ALTER TABLE `anexo`
+  ADD CONSTRAINT `anexo_ibfk_1` FOREIGN KEY (`proceso_id`) REFERENCES `proceso` (`idproceso`);
+
+--
 -- Filtros para la tabla `documento_formato`
 --
 ALTER TABLE `documento_formato`
@@ -313,7 +321,7 @@ ALTER TABLE `documento_formato`
 -- Filtros para la tabla `historial_archivos`
 --
 ALTER TABLE `historial_archivos`
-  ADD CONSTRAINT `historial_archivos_ibfk_1` FOREIGN KEY (`fkDocumentoFormado`) REFERENCES `documento_formato` (`idDocumentoFormato`),
+  ADD CONSTRAINT `historial_archivos_ibfk_1` FOREIGN KEY (`fkDocumentoFormato`) REFERENCES `documento_formato` (`idDocumentoFormato`),
   ADD CONSTRAINT `historial_archivos_ibfk_2` FOREIGN KEY (`fkUsuarioAprobo`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `historial_archivos_ibfk_3` FOREIGN KEY (`fkDocumentoExterno`) REFERENCES `documento_externo` (`idDocumentoExterno`);
 COMMIT;

@@ -9,18 +9,19 @@ require_once MAIN_APP_ROUTE . '../models/BaseModel.php';
 
 class AnexoModel extends BaseModel {
     public function __construct() {
-        $this->table = "anexo";
+        $this->table = "anexo"; // Nombre de la tabla en la base de datos
         parent::__construct();
     }
 
-    public function saveAnexo($nombre, $fecha, $rutaArchivo) {
+    public function saveAnexo($nombre, $fecha, $rutaArchivo, $procesoId) {
         try {
-            $sql = "INSERT INTO $this->table (nombre, fecha, ruta_archivo) 
-                    VALUES (:nombre, :fecha, :ruta_archivo)";
+            $sql = "INSERT INTO $this->table (nombre, fecha, ruta_archivo, proceso_id) 
+                    VALUES (:nombre, :fecha, :ruta_archivo, :proceso_id)";
             $statement = $this->dbConnection->prepare($sql);
             $statement->bindParam(":nombre", $nombre, PDO::PARAM_STR);
             $statement->bindParam(":fecha", $fecha, PDO::PARAM_STR);
             $statement->bindParam(":ruta_archivo", $rutaArchivo, PDO::PARAM_STR);
+            $statement->bindParam(":proceso_id", $procesoId, PDO::PARAM_INT); // Asegúrate de que el ID del proceso se guarde
             return $statement->execute();
         } catch (PDOException $ex) {
             echo "Error al guardar el anexo: " . $ex->getMessage();
@@ -28,7 +29,8 @@ class AnexoModel extends BaseModel {
         }
     }
 
-    public function getAll() : array {
+    public function getAll(): array
+    {
         try {
             $sql = "SELECT * FROM $this->table ORDER BY fecha DESC";
             $statement = $this->dbConnection->prepare($sql);
@@ -40,7 +42,8 @@ class AnexoModel extends BaseModel {
         }
     }
 
-    public function getAnexo($id) {
+    public function getAnexo($id)
+    {
         try {
             $sql = "SELECT * FROM $this->table WHERE idAnexo = :id";
             $statement = $this->dbConnection->prepare($sql);
@@ -53,7 +56,8 @@ class AnexoModel extends BaseModel {
         }
     }
 
-    public function editAnexo($id, $nombre, $fecha, $rutaArchivo) {
+    public function editAnexo($id, $nombre, $fecha, $rutaArchivo)
+    {
         try {
             $sql = "UPDATE $this->table 
                     SET nombre = :nombre, fecha = :fecha, ruta_archivo = :ruta 
@@ -70,7 +74,8 @@ class AnexoModel extends BaseModel {
         }
     }
 
-    public function removeAnexo($id) {
+    public function removeAnexo($id)
+    {
         try {
             $sql = "DELETE FROM $this->table WHERE idAnexo = :id";
             $statement = $this->dbConnection->prepare($sql);

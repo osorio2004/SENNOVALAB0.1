@@ -15,6 +15,7 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Fecha</th>
+                        <th>Sigla Proceso</th> <!-- Nueva columna para la sigla -->
                         <th>Archivo</th>
                         <th>Acciones</th>
                     </tr>
@@ -25,10 +26,9 @@
                             <td><?= $anexo->idAnexo; ?></td>
                             <td><?= htmlspecialchars($anexo->nombre); ?></td>
                             <td><?= $anexo->fecha; ?></td>
+                            <td><?= htmlspecialchars($procesoMap[$anexo->proceso_id] ?? 'N/A'); ?></td> <!-- Mostrar la sigla del proceso -->
                             <td>
-                                <a href="uploads/<?= $anexo->ruta_archivo; ?>" target="_blank">
-                                    Ver Archivo
-                                </a>
+                                <a href="uploads/<?= $anexo->ruta_archivo; ?>" target="_blank">Ver Archivo</a>
                             </td>
                             <td>
                                 <a href="/anexo/edit/<?= $anexo->idAnexo; ?>" class="btn btn-sm btn-warning">Editar</a>
@@ -42,3 +42,4 @@
             <p>No hay anexos registrados.</p>
         <?php endif; ?>
     </div>
+</div>
