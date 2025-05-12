@@ -105,37 +105,9 @@ return [
     ],
 
     //Rutas tipoDoc
-    '/tipoDoc/index' => [
-        "controller" => 'App\Controllers\TipoDocController',
-        "action" => 'index'
-    ],
     '/tipoDoc/view' => [
         "controller" => 'App\Controllers\TipoDocController',
         "action" => 'view'
-    ],
-    '/tipoDoc/new' => [
-        "controller" => 'App\Controllers\TipoDocUseController',
-        "action" => 'new'
-    ],
-    '/tipoDoc/create' => [
-        "controller" => 'App\Controllers\TipoDocUseController',
-        "action" => 'create'
-    ],
-    '/tipoDoc/view/(\d+)' => [
-        "controller" => 'App\Controllers\TipoDocUseController',
-        "action" => 'viewOne'
-    ],
-    '/tipoDoc/edit/(\d+)' => [
-        "controller" => 'App\Controllers\TipoDocUseController',
-        "action" => 'edit'
-    ],
-    '/tipoDoc/update' => [
-        "controller" => 'App\Controllers\TipoDocUseController',
-        "action" => 'update'
-    ],
-    '/tipoDoc/delete/(\d+)' => [
-        "controller" => 'App\Controllers\TipoDocUseController',
-        "action" => 'delete'
     ],
 
     //ClasiDoc

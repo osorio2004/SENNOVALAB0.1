@@ -2,11 +2,13 @@
 <div class="navegate-group">
     <div class="data-container">
         <h1 class="title">Listado de Anexos</h1>
-        <div class="back">
-            <a href="/main"><img src="/img/back.svg"></a>
-        </div>
-        <div class="create">
-            <a href="/anexo/new" class="btn btn-primary mb-3">+</a>
+        <div class="actions">
+            <div class="back-anex">
+                <a href="/tipoDoc/view"><img src="/img/back.svg"></a>
+            </div>
+            <div class="create-anex">
+                <a href="/anexo/new" class="btn btn-primary mb-3">+</a>
+            </div>
         </div>
         <?php if (!empty($anexos)) : ?>
             <table class="table table-striped">

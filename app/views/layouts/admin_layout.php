@@ -178,7 +178,7 @@
                             <li><a href="/documentoFormato/view"><i class="fas fa-file-contract"></i><span class="span">Formato</span></a></li>
                             <li><a href="/proceso/view"><i class="fas fa-project-diagram"></i><span class="span">Proceso</span></a></li>
                             <li><a href="/tipoDocumental/view"><i class="fas fa-file-alt"></i><span class="span">Tipo Documento</span></a></li>
-                            <li><a href="/anexo/view"><i class="fas fa-paperclip"></i><span class="span">Anexo</span></a></li>
+                            <li><a href="/tipoDoc/view"><i class="fas fa-paperclip"></i><span class="span">Anexo</span></a></li>
                         <?php endif ?>
 
                         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'coordinador'): ?>

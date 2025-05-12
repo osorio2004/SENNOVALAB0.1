@@ -1,0 +1,115 @@
+:root {
+    --primary-color: #2f855a;
+    --secondary-color: #2ecc71;
+    --background-light: #f4f7f6;
+    --text-dark: #2c3e50;
+    --card-background: #ffffff;
+    --transition-speed: 0.3s;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.data-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.doc-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.back-doc a img {
+    margin: 10px 0 0 0;
+    width: 34px;
+    height: 34px;
+}
+
+.doc-top-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    margin: 0 0 30px 0;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.doc-top-header h1 {
+    color: var(--primary-color);
+    margin: auto;
+    font-size: 2.5rem;
+}
+
+.doc-search {
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 10px 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.doc-search input {
+    border: none;
+    outline: none;
+    margin-right: 10px;
+    width: 250px;
+}
+
+.doc-search i {
+    color: var(--primary-color);
+}
+
+.priv {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.doc-content {
+    background-color: var(--card-background);
+    border-radius: 15px;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: all var(--transition-speed);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+.doc-content:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.doc-content h2 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .doc-top-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .doc-search {
+        margin-top: 15px;
+        width: 100%;
+    }
+}
