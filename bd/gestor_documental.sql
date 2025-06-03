@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-05-2025 a las 06:34:00
+-- Tiempo de generación: 03-06-2025 a las 14:26:37
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,7 +40,8 @@ CREATE TABLE `anexo` (
 --
 
 INSERT INTO `anexo` (`idAnexo`, `nombre`, `fecha`, `ruta_archivo`, `proceso_id`) VALUES
-(1, 'Pagos', '2025-04-28', '', NULL);
+(9, 'Tecnologia', '2025-06-02', 'https://canzxiiywvxkfrfleqeh.supabase.co/storage/v1/object/public/files/1748906499_MENTALIDAD-EMPRESARIAL.pdf', 4),
+(10, 'Pagos', '2025-06-02', '', 4);
 
 -- --------------------------------------------------------
 
@@ -256,7 +257,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `anexo`
 --
 ALTER TABLE `anexo`
-  MODIFY `idAnexo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idAnexo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `documento_externo`
