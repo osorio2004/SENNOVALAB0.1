@@ -758,13 +758,6 @@ body.dark-mode #sin-resultados {
     overflow: hidden;
 }
 
-.navegate-group {
-    height: auto;
-    padding: 25px;
-    background-color: #f9fafb;
-    border-bottom: 1px solid #e0e0e0;
-}
-
 .navegate-group h2 {
     color: #2f855a;
     margin: 0;
@@ -886,12 +879,6 @@ body.dark-mode .navegate-group h2 {
     content: attr(title);
     position: absolute;
     left: -9999px;
-}
-
-.content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .torta-container {

@@ -3,6 +3,10 @@
 <div class="data-container">
     <h1>Nuevo Anexo</h1>
 
+    <?php if (!empty($error)): ?>
+        <div class="alert alert-danger"><?= htmlspecialchars($error); ?></div>
+    <?php endif; ?>
+
     <form action="/anexo/create" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="txtNombre">Nombre:</label>

@@ -38,16 +38,27 @@ class AnexoController extends BaseController
         ];
         $this->render('anexo/viewAnexo.php', $data);
     }
-
+    
     public function viewOne($id)
     {
         $anexoObj = new AnexoModel();
-        $anexoInfo = $anexoObj->getAnexo($id);
+        $procesoModel = new ProcesoModel();
+
+        $anexo = $anexoObj->getAnexo($id);
+        $procesos = $procesoModel->getAll();
+
+        // Crear mapa de procesos para mostrar la sigla
+        $procesoMap = [];
+        foreach ($procesos as $proceso) {
+            $procesoMap[$proceso->idproceso] = $proceso->siglaCod;
+        }
 
         $data = [
-            "anexo" => $anexoInfo,
-            "title" => "Detalles del Anexo"
+            "anexo" => $anexo,
+            "procesoMap" => $procesoMap,
+            "title" => "Detalle del Anexo"
         ];
+
         $this->render('anexo/viewOneAnexo.php', $data);
     }
 
@@ -62,27 +73,61 @@ class AnexoController extends BaseController
         ];
         $this->render('anexo/newAnexo.php', $data);
     }
-
     public function create()
     {
         if (isset($_POST['txtNombre'], $_POST['txtFecha'], $_POST['procesoId']) && isset($_FILES['archivo'])) {
-            $nombre = $_POST['txtNombre'] ?? null;
-            $fecha = $_POST['txtFecha'] ?? null;
-            $procesoId = $_POST['procesoId'] ?? null; // Obtener el ID del proceso
-
-            // Manejar archivo subido
+            $nombre = $_POST['txtNombre'];
+            $fecha = $_POST['txtFecha'];
+            $procesoId = $_POST['procesoId'];
             $archivo = $_FILES['archivo'];
-            $rutaDestino = '';
 
-            if ($archivo['error'] == UPLOAD_ERR_OK) {
+            if ($archivo['error'] === UPLOAD_ERR_OK) {
                 $nombreArchivo = basename($archivo['name']);
-                $rutaDestino = 'uploads/' . $nombreArchivo; // Carpeta 'uploads'
-                move_uploaded_file($archivo['tmp_name'], MAIN_APP_ROUTE . '../public/' . $rutaDestino);
-            }
+                $archivoTmp = $archivo['tmp_name'];
+                $mimeType = mime_content_type($archivoTmp);
+                $nombreUnico = time() . '_' . preg_replace('/[^a-zA-Z0-9_\.-]/', '_', $nombreArchivo);
 
-            $anexoObj = new AnexoModel();
-            $anexoObj->saveAnexo($nombre, $fecha, $rutaDestino, $procesoId); // Asegúrate de que el método saveAnexo acepte el ID del proceso
-            $this->redirectTo("anexo/view");
+                $supabaseUrl = 'https://canzxiiywvxkfrfleqeh.supabase.co';
+                $supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNhbnp4aWl5d3Z4a2ZyZmxlcWVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg4NzQwNDAsImV4cCI6MjA2NDQ1MDA0MH0.icK_XzY9XOVdybcWmFi0YYQQYoS_2_dFLsDKU7UhxZg'; // tu clave larga
+                $bucket = 'files';
+
+                // Leer contenido del archivo
+                $contenidoArchivo = file_get_contents($archivoTmp);
+                if (!$contenidoArchivo) {
+                    echo "Error al leer el archivo temporal.";
+                    return;
+                }
+
+                // Subir a Supabase
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, "$supabaseUrl/storage/v1/object/$bucket/$nombreUnico");
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $contenidoArchivo);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                    "Authorization: Bearer $supabaseKey",
+                    "Content-Type: $mimeType",
+                    "x-upsert: true"
+                ]);
+
+                $response = curl_exec($ch);
+                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                curl_close($ch);
+
+                if ($httpCode >= 200 && $httpCode < 300) {
+                    $rutaArchivo = "$supabaseUrl/storage/v1/object/public/$bucket/$nombreUnico";
+                    $anexoObj = new AnexoModel();
+                    $anexoObj->saveAnexo($nombre, $fecha, $rutaArchivo, $procesoId);
+                    $this->redirectTo("anexo/view");
+                } else {
+                    echo "Error al subir el archivo a Supabase. Código: $httpCode";
+                    echo "<pre>$response</pre>"; // 👈 muestra detalle del error
+                }
+            } else {
+                echo "Error al subir el archivo.";
+            }
+        } else {
+            echo "Todos los campos son requeridos.";
         }
     }
 
